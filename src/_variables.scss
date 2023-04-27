@@ -1,0 +1,43 @@
+
+
+
+$typeface-body: 
+    "Inter",
+    // "Heebo",
+    // 'Poppins',
+    sans-serif;
+
+
+$weight-light: 200; 
+$weight-regular: 300; 
+$weight-bold: 400; 
+
+$color-foreground: #1A1C1E; 
+$color-tint: #555770; 
+$color-gray: #B3B5C3; 
+$color-shade: #F3F3F6; 
+$color-background: #FAFAFC; 
+$color-elevate: #fdfdfe; 
+
+// $color-foreground: #FAFAFC; 
+// $color-tint: #F2F2F5; 
+// $color-gray: #B3B5C3; 
+// $color-shade: #555770; 
+// $color-background: #1A1C1E; 
+// $color-elevate: #000000; 
+
+// $color-brand: #71E59A;
+$color-brand: #3361FF;
+$color-info: #3361FF; 
+$color-error: #FF5E6E; 
+$color-gold: #FFD700; 
+
+
+// Mixins
+
+@mixin truncated {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
