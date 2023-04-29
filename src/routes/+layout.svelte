@@ -18,6 +18,8 @@
 
         #logo {
             height: 2.8rem;
+            fill: app.$color-brand;
+            stroke: transparent;
         }
 
         .links {
@@ -32,22 +34,23 @@
 <script>
     import { goto } from "$app/navigation";
     import "../app.scss";
-
-    const navigateToQuote = () => {
-        goto(`/quote`, { replaceState: false });
-    }
 </script>
 
+
+
 <nav>
-    <a href="/" id="logo"><img src="/logo.png" alt=""></a>
+    <a href="/" id="logo">
+        <img src="/icons/logo.png" alt="">
+    </a>
 
     <div class="links">
         <a href="/portfolio">Portfolio</a>
         <a href="/services">Services</a>
-        <a href="/team">Team</a>
+        <a href="/about">About</a>
+        <a href="/careers">Careers</a>
     </div>
 
-    <button on:click={ navigateToQuote } id="cta">Get Quote</button>
+    <a href="/quote" class="button">Get Quote</a>
 </nav>
 
 <main>

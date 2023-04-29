@@ -15,19 +15,20 @@
     font-family: app.$typeface-body;
     font-size: inherit;
     font-weight: app.$weight-regular;
-    line-height: 150%;
+    line-height: inherit;
 }
 
 html {
-    font-size: 16px;
+    font-size: 15px;
     stroke-width: 1.0px;
+    line-height: 150%;
     background-color: app.$color-background;
 }
 @media screen and (min-width: 840px) and (min-height: 680px)
 {
     html 
     {
-        font-size: 18px;
+        font-size: 17px;
     }
 }
 
@@ -62,11 +63,15 @@ p, input {
 }
 
 
-button {
+button, a.button {
     padding: 0.3rem 1rem; 
     border-radius: 0.5rem; 
     background-color: app.$color-brand;
     color: app.$color-background;
+}
+
+a.button {
+    width: max-content;
 }
 
 button, a {
@@ -75,7 +80,7 @@ button, a {
 }
 
 a {
-    color: app.$color-brand;
+    color: app.$color-foreground;
 }
 
 * > img {
