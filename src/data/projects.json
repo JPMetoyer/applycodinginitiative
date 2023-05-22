@@ -1,0 +1,26 @@
+[
+    {
+        "id": "edm",
+        "title": "Kehlani Tour",
+        "location": "Kigali, RWA",
+        "image": "/images/edm.jpg"
+    },
+    {
+        "id": "tukutane",
+        "title": "Tukutane Mombasa Festival",
+        "location": "Mombasa, KEN",
+        "image": "/images/festival.jpg"
+    },
+    {
+        "id": "chatelair",
+        "title": "Le Chatêláir Cocktail Party",
+        "location": "Verdun, FRA",
+        "image": "/images/cocktail.jpg"
+    },
+    {
+        "id": "tusker",
+        "title": "Tusker New Years Party",
+        "location": "Nairobi, KEN",
+        "image": "/images/barman.jpg"
+    }
+]
