@@ -126,7 +126,7 @@
         }
 
         > div.grid {
-            display: grid;
+            display: none;
             gap: 2rem 2rem;
             margin: 4rem 0px;
             grid-template-columns: repeat(auto-fill, minmax(312px, 1fr));

@@ -1,38 +1,98 @@
-# create-svelte
+<!-- PROJECT LOGO -->
+# Blood Drive Donation Website
+<br>
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+[![MIT License][license-shield]][license]
 
-## Creating a project
+<br>
+<br>
 
-If you're seeing this, you've probably already done this step. Congrats!
+<div align="center">
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+  <img width="1536" alt="project" src="https://user-images.githubusercontent.com/98195031/212464463-486765bd-b43d-472c-9378-40b089a73d68.png">
 
-# create a new project in my-app
-npm create svelte@latest my-app
+  <h3 align="center">Afyadux · HOSA · Wunsche Coding Initiative Blood Drive Website </h3>
+
+  <div align="center">
+    <a target="_blank" href="https://snacks-r-us.web.app">View Live &#8599;</a> ·
+    <a href="https://github.com/cxrlko/wordscrambler/blob/master/LICENSE.txt">Licence</a>
+  </div>
+
+</div>
+
+<br>
+
+https://user-images.githubusercontent.com/98195031/185800013-090a4f54-3dcb-4a5a-85f9-f42217edbf62.mp4
+
+<br>
+<br>
+
+## About
+
+Friendly, clean and whimsical Snacks R Us is a website for a fictional company that retails snacks. It has a clean and minimal interface following the “whimsical simplicity” of the brand and had a major focus on the checkout user experience.
+
+
+## Tech Stack
+
+* [Firestore](https://firebase.google.com/products/firestore) (NoSQL Database)
+* [SvelteKit](https://kit.svelte.dev/) (FrontEnd Framework)
+* [TypeScript](https://www.typescriptlang.org/) (Statically Typed JavaScript Superset)
+* [SCSS](https://sass-lang.com/) (Styling)
+
+
+## Installation
+
+Install Dependencies
+```
+npm install react --save
+npm install webpack-dev-server
+npm install --save typescript @types/node @types/react @types/react-dom
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+Run Commands
+``` 
+tsc
+npm start
 ```
 
-## Building
+Developer Dependencies (Not required to run application)
+```
+npm install react-dom --save
 
-To create a production version of your app:
+npm install webpack --save
+npm install webpack-dev-server --save
+npm install webpack-cli --save
 
-```bash
-npm run build
+npm install babel-core babel-loader babel-preset-env babel-preset-react --save-dev
 ```
 
-You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Roadmap
+
+- [ ] Home Page
+- [ ] Anonymous purchases
+- [ ] Add Additional Templates w/ Examples
+- [ ] User authentication
+- [ ] Location mapping
+
+
+## License
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+
+## Contact
+
+Afyadux - [@thecarlko](https://github.com/afyadux) - afyadux.org <br>
+Carl Omondi - [@thecarlko](mailto:carlkomondi@afyadux.org) - carlkomondi@afyadux.org <br>
+Project Link: [Github Repo](https://github.com/thecarlko/hosa)
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[license]: https://github.com/cxrlko/template-react-app/blob/master/LICENSE.txt
+
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin]: https://linkedin.com/in/carlkomondi

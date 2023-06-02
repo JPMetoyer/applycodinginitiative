@@ -48,6 +48,10 @@
 <script>
     import { goto } from "$app/navigation";
     import "../app.scss";
+
+    import { page } from '$app/stores';
+    const padding = ($page.route.id !== "/partners");
+
 </script>
 
 
@@ -66,10 +70,10 @@
         <a href="/careers">Careers</a>
     </div>
 
-    <a href="/quote" class="button">Get Quote</a>
+    <a href="/quote" class="button">Donate</a>
 </nav>
 
-<main>
+<main style={ `padding: 0px ${ padding ? 4 : 0 }vw` }>
     <slot></slot>
 </main>
 
