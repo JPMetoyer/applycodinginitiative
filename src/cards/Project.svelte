@@ -6,8 +6,7 @@
     @use "../variables" as app;
 
     div.project {
-        width: calc(92vw - 2rem);
-        margin: 0px 0.5rem; 
+        width: 100%;
         border-radius: 0.8rem;
 
         display: grid;

@@ -4,6 +4,8 @@
     @use "../../variables" as app;
 
     #showcase {
+
+
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
         grid-template-rows: 1fr;
@@ -54,6 +56,8 @@
                     display: flex;
                     align-items: center;
 
+                    > :global(div) { width: calc(92vw - 2rem); margin: 0px 0.5rem; }
+
                 }
 
             }
@@ -92,6 +96,48 @@
 
         
     }
+
+    #catalogue {
+        padding: 2rem 4vw;
+        margin-bottom: 8rem;
+
+        display: flex;
+        flex-direction: column;
+        height: min-content;
+
+        > div.info {
+            display: flex; 
+            flex-direction: column;
+            gap: 2rem;
+
+            > h1 { position: relative; }
+            > h1::after { 
+                content: "";
+                position: absolute;
+                bottom: -1rem;
+                left: 0px;
+                
+                ;
+                height: 1px;
+                width: 50%;
+                background-color: app.$color-brand;
+            }
+
+        }
+
+        > div.grid {
+            display: grid;
+            gap: 2rem 2rem;
+            margin: 4rem 0px;
+            grid-template-columns: repeat(auto-fill, minmax(312px, 1fr));
+
+        }
+
+
+
+    }
+
+
 </style>
 
 <script lang="ts">
@@ -142,5 +188,19 @@
         { /each }
     </div>
 </article>
+
+<section id="catalogue">
+    <div class="info">
+        <h1>Lorem ipsum dolor sit amet</h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates aspernatur animi commodi omnis? Eos, esse sequi ducimus dolorum laboriosam inventore in pariatur quibusdam autem eligendi</p>
+    </div>
+
+    <div class="grid">
+        <Project></Project>
+        <Project></Project>
+        <Project></Project>
+        <Project></Project>
+    </div>
+</section>
 
 
