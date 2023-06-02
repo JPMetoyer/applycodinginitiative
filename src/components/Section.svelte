@@ -5,7 +5,7 @@
 
 <style lang="scss">
 
-    @use "../../variables" as app;
+    @use "../variables" as app;
     section {
         display: flex; 
         flex-direction: column;

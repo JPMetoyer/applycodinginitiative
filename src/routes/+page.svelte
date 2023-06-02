@@ -18,8 +18,10 @@
         align-items: center;
         gap: 1rem;
 
+        marginbot
+
         h1 {
-            font-size: 300%;
+            font-size: 200%;
             padding-top: 2rem;
             padding-left: 2rem;
             transform: translateY(00%);
@@ -345,8 +347,8 @@
 
 
 <script lang="ts">
-    import Section from "./components/Section.svelte";
-    import Project from "./cards/Project.svelte";
+    import Section from "../components/Section.svelte";
+    import Project from "../cards/Project.svelte";
     import events from "../data/projects.json";
     import Work from "../models/work";
 

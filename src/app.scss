@@ -33,11 +33,11 @@ html {
 }
 
 body {
-    padding-top: 3.5rem;
+    padding-top: 4rem;
 }
 
 main {
-    padding: 0px 4vw; 
+    // padding: 0px 4vw; 
     min-height: calc(100vh - 4rem);
 }
 
@@ -84,8 +84,13 @@ button, a.button {
 }
 
 button.secondary, a.button.secondary {
+    background-color: rgba(251, 45, 45, 0.16);
+    color: app.$color-brand;
+}
+
+button.tertiary, a.button.tertiary {
     background-color: transparent;
-    border: 1px solid app.$color-brand;
+    border: 0.8px solid app.$color-brand;
     color: app.$color-brand;
 }
 
