@@ -145,32 +145,36 @@
 
     import { highlights } from "../../data/portfolio.json"; 
     import Project from "../../cards/Project.svelte";
+    import { round } from "../../functions/math";
 
     let highlightIndex = 0;
 
+    let carousel : HTMLElement;
+    let carouselWidth: number;
+    let viewportWidth: number;
+    let capturedPosition : number | undefined = undefined;
     
 </script>
 
 
 <article id="showcase">
     <div>
-        <h1>Lorem ipsum dolor sit.</h1>
+        <h1>Lorem ipsum dolor sit</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae adipisci, nesciunt necessitatibus voluptatum repellendus deleniti sunt, consequuntur officia cumque explicabo doloremque corporis inventore consequatur?</p>
     </div>
 
     <div>
-        <div class="carousel">
-        <div class="viewport">
+        <div class="carousel" bind:this={ carousel } bind:clientWidth={ carouselWidth } on:scroll={ handleScroll }>
+        <div class="viewport" bind:clientWidth={ viewportWidth }>
+        { #each highlights as info }
             <Project></Project>
-            <Project></Project>
-            <Project></Project>
-            <Project></Project>
+        {/each }
         </div>
         </div>
 
         <div class="actions">
-            <button class="secondary">See impact</button>
-            <button class="tertiary">More examples</button>
+            <button class="secondary">Case Study</button>
+            <button class="tertiary">See More</button>
         </div>
     </div>
 
