@@ -66,7 +66,7 @@
         <a href="/careers">Careers</a>
     </div>
 
-    <a href="/quote" class="button">Get Quote</a>
+    <a href="mailto:contact@33beats.com" class="button">Get Quote</a>
 </nav>
 
 <main>
