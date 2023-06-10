@@ -9,31 +9,148 @@
         top: 0px; 
         left: 0px; 
         right: 0px;
-
         z-index: 5;
-
         display: flex; 
         align-items: center; 
         justify-content: space-between;
-
         padding: 0.3rem 1rem; 
         background-color: app.$color-background;
-        border-bottom: 0.5px solid red;
+        border-bottom: 0.5px solid app.$color-brand;
 
         #logo {
             width: 2.8rem;
             height: 2.8rem;
+            padding: 0.2rem;
             fill: app.$color-brand;
-            stroke: transparent;
         }
 
+        #underline::after {
+            content: '';
+            width: 0;
+            height: 3px;
+            background-color: app.$color-brand;
+            margin: auto;
+            display: block;
+        }
+
+        #underline:hover::after {
+        width: 100%;
+        transition: all 80ms ease-in-out;
+        }
         .links {
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            background-color: transparent;
             
-            display: none;
-            // display: flex; 
+            display: flex; 
             align-items: center; 
             justify-content: center; 
             gap: 1.5rem;
+
+
+            @media screen and (max-width: 960px) {
+                gap: 0.4rem;
+                padding: 0.8rem 1.25rem 0.8rem 1.25rem;
+                border-radius: 1rem;
+                border: 0.8px solid app.$color-brand;
+
+                > a.current {
+                    
+                    color: app.$color-brand;
+                    width: max-content;
+                    height: 0.2rem;
+                    transform: translateY(-0.60rem);
+                    background-color: transparent;
+                    margin: 0px 0.5rem;
+                }
+
+                > a { 
+                    pointer-events: none;
+                    color: transparent;
+                    width: 0.2rem;
+                    height: 0.2rem;
+                    background-color: app.$color-gray;
+                    border-radius: 100%;
+                }
+            }
+
+            // > a:hover {
+            //     box-shadow: 0px 1px 0px 0px;
+            //     transition: all 300ms ease-in-out;
+            // }
+        }
+    }
+
+
+    button.tabbar {
+
+        padding: unset !important;
+        border-radius: unset !important;
+        color: unset !important;
+        width: unset !important;
+
+        pointer-events: none;
+
+        position: fixed;
+        top:0px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+        z-index: 2;
+        background-color: rgba(255, 255, 255, 0.0) !important;
+        backdrop-filter: blur(0rem);
+        -webkit-backdrop-filter: blur(0rem);
+
+        display: flex;
+        align-items: flex-start;
+
+        transition-property: backdrop-filter -webkit-backdrop-filter background-color;
+        transition-duration: 0.2s;
+        transition-timing-function: ease-out;
+
+        border: none;
+
+        &:focus, &:active {
+            background-color: red;
+        }
+
+        &.show {
+            pointer-events: all;
+
+            backdrop-filter: blur(1rem);
+            -webkit-backdrop-filter: blur(1rem);
+            background-color: rgba(255, 255, 255, 0.3) !important;
+
+            > div.links {
+                transform: translateX(-50%) translateY(0rem);
+            }
+        }
+
+        > div.links {
+
+            transition-property: transform;
+            transition-duration: 0.3s;
+            transition-timing-function: ease-out;;
+            // transition-delay: 0.1s;
+
+            z-index: 3;
+            margin-top: 5rem;
+            margin-left: 50%;
+            transform: translateX(-50%) translateY(-5rem);
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.8rem;
+            background-color: app.$color-background;
+            width: max-content;
+
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+
+            > a.current { pointer-events: none; text-decoration: line-through; color: app.$color-gray;  }
         }
     }
 
@@ -46,11 +163,24 @@
 </style>
 
 <script>
+    import { page } from "$app/stores";
     import { goto } from "$app/navigation";
     import "../app.scss";
+
+    let tabbar = false;
+    const toggleTabbar = () => { tabbar = !tabbar; }
+
 </script>
 
 
+<button class={ tabbar ? "tabbar show" : "tabbar" } on:click={ toggleTabbar }>
+
+    <div class="links">
+        <a class={ $page.route.id === "/portfolio" ? "current" : "" } href="/portfolio">Portfolio</a>
+        <a class={ $page.route.id === "/services" ? "current" : "" } href="/services">Services</a>
+        <a class={ $page.route.id === "/about" ? "current" : "" } href="/about">About</a>
+    </div>
+</button>
 
 <nav>
     <a href="/" id="logo">
@@ -59,12 +189,11 @@
         </svg>            
     </a>
 
-    <div class="links">
-        <a href="/services">Services</a>
-        <a href="/about">About</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/careers">Careers</a>
-    </div>
+    <button class="links" on:click={ toggleTabbar }>
+        <a class={ $page.route.id === "/portfolio" ? "current" : "" } href="/portfolio" id="underline">Portfolio</a>
+        <a class={ $page.route.id === "/services" ? "current" : "" } href="/services" id="underline">Services</a>
+        <a class={ $page.route.id === "/about" ? "current" : "" } href="/about" id="underline">About</a>
+    </button>
 
     <a href="mailto:contact@33beats.com" class="button">Get Quote</a>
 </nav>

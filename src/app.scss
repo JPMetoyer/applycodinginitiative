@@ -124,3 +124,51 @@ svg {
         transform: translateX(-50%) translateY(-50%);
     }
 }
+
+.bisect {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 1rem 1rem; 
+    height: calc(100vh - 4rem);
+
+    padding: 0px 6vw;
+
+    > * {
+        margin: auto 0px;
+    }
+
+    @media screen and (max-width: 960px) {
+
+        // > :nth-child(1).graphic {
+        //     transform: translateY(7vh);
+        //     margin: auto 0px auto 0px;
+        // }
+
+        > :nth-child(2) {
+            transform: translateY(-3vh);
+        }
+
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+}
+
+
+.bisect .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.bisect .graphic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > img {
+        border-radius: 1rem;
+        filter: drop-shadow(0rem 1rem 3rem rgba(40, 42, 54, 0.08));
+    }
+}

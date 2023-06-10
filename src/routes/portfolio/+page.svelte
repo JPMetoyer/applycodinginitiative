@@ -164,7 +164,7 @@
     </div>
 
     <div>
-        <div class="carousel" bind:this={ carousel } bind:clientWidth={ carouselWidth } on:scroll={ handleScroll }>
+        <div class="carousel" bind:this={ carousel } bind:clientWidth={ carouselWidth }>
         <div class="viewport" bind:clientWidth={ viewportWidth }>
         { #each highlights as info }
             <Project></Project>
