@@ -18,7 +18,9 @@
 
         padding: 0.3rem 1rem; 
         background-color: app.$color-background;
-        border-bottom: 0.5px solid red;
+        border-bottom: 0.5px dashed red;
+
+
 
         #logo {
             width: 2.8rem;
@@ -35,14 +37,30 @@
             justify-content: center; 
             gap: 1.5rem;
         }
+
+        #cta {
+            position: relative;
+            padding: 0.2rem calc(1.5rem + 0.9rem) 0.2rem 1rem; 
+        }
+
+        #cta > svg {
+            position: absolute;
+            right: 0.8rem;
+            top: 50%; 
+            bottom: 0px;
+            width: 1.2rem;
+            height: 1.2rem;
+            fill: app.$color-background;
+            transform: translateY(-50%) rotateZ(180deg);
+        }
+
+        span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
     }
 
-    footer {
-        display: none;
-        height: 50vh;
-        min-height: 300px;
-        margin-top: 16vh;
-    }
 </style>
 
 <script>
@@ -50,7 +68,13 @@
     import "../app.scss";
 
     import { page } from '$app/stores';
+    import Icon from "../components/Icon.svelte";
     const padding = ($page.route.id !== "/partners");
+
+
+    const handleMenuClick = () => {
+
+    }
 
 </script>
 
@@ -70,7 +94,22 @@
         <a href="/careers">Careers</a>
     </div>
 
-    <a href="/quote" class="button">Donate</a>
+    <span>
+        <a href="/quote" id="cta" class="button">
+            Donate
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.9934 2C7.34388 2 3.5 5.71789 3.5 10.3178C3.5 12.6357 4.34198 14.7876 5.7305 16.6116C7.24809 18.6235 9.13474 20.3765 11.2704 21.7524C11.8039 22.0944 12.2425 22.0704 12.7285 21.7524C14.8522 20.3765 16.7388 18.6235 18.2695 16.6116C19.657 14.7876 20.5 12.6357 20.5 10.3178C20.5 5.71789 16.6561 2 11.9934 2"/>
+            </svg>
+        </a>
+
+        <Icon frame={[ 2, 2 ]} onClick={ handleMenuClick }>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 17H19" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 12H19" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 7H19" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </Icon>
+    </span>
 </nav>
 
 <main style={ `padding: 0px ${ padding ? 4 : 0 }vw` }>

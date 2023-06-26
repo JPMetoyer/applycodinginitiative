@@ -28,7 +28,7 @@
 
 <script lang="ts">
     export let disabled : boolean = false; 
-    export let handleClick : () => void = () => { };
+    export let onClick : () => void = () => { };
 
     export let fill : boolean = false;
     export let frame: [number, number] = [1.5, 1.5];
@@ -36,7 +36,7 @@
 
 </script>
 
-<button style={ `width: ${ frame[0] }rem; height: ${ frame[1] }rem` } disabled={ disabled } on:click={ handleClick } class={ fill ? "icon fill" : "icon" }>
+<button style={ `width: ${ frame[0] }rem; height: ${ frame[1] }rem` } disabled={ disabled } on:click={ onClick } class={ fill ? "icon fill" : "icon" }>
     <slot></slot>
 </button>
 
