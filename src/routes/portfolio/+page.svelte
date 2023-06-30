@@ -24,6 +24,8 @@
             gap: 1rem;
 
             padding: 0px 4vw;
+
+            h1 { font-size: 124%; }
         }
 
         > div:nth-child(2) {
@@ -56,7 +58,7 @@
                     display: flex;
                     align-items: center;
 
-                    > :global(div) { width: calc(92vw - 2rem); margin: 0px 0.5rem; }
+                    > :global(a) { width: calc(92vw - 2rem); margin: 0px 0.5rem; }
 
                 }
 
@@ -142,32 +144,28 @@
 
 <script lang="ts">
     import Icon from "../../components/Icon.svelte";
-
-    import { highlights } from "../../data/portfolio.json"; 
     import Project from "../../cards/Project.svelte";
-    import { round } from "../../functions/math";
-
-    let highlightIndex = 0;
-
-    let carousel : HTMLElement;
-    let carouselWidth: number;
-    let viewportWidth: number;
-    let capturedPosition : number | undefined = undefined;
+    import CaseStudy from "../../models/casestudy";
     
+    import projects from "../../data/portfolio.json";
+
+    let highlightIndex: number = 0; 
+
+
 </script>
 
 
 <article id="showcase">
     <div>
-        <h1>Lorem ipsum dolor sit</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae adipisci, nesciunt necessitatibus voluptatum repellendus deleniti sunt, consequuntur officia cumque explicabo doloremque corporis inventore consequatur?</p>
+        <h1>(33)Beats Innovators. Event Facilitators.</h1>
+        <p>Explore our unrivaled DJ solutions, curated to elevate events and drive corporate or personal success. Witness the power of sound as we unleash unforgettable experiences and amplify your brand's impact.</p>
     </div>
 
     <div>
-        <div class="carousel" bind:this={ carousel } bind:clientWidth={ carouselWidth }>
-        <div class="viewport" bind:clientWidth={ viewportWidth }>
-        { #each highlights as info }
-            <Project></Project>
+        <div class="carousel">
+        <div class="viewport">
+        { #each projects as info }
+            <Project data={ new CaseStudy(info) } />
         {/each }
         </div>
         </div>
@@ -179,7 +177,7 @@
     </div>
 
     <div class="value">
-        { #each (highlights[highlightIndex].impact) as value }
+        { #each (projects[highlightIndex].impact) as value }
         <span>
             <Icon>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -200,10 +198,9 @@
     </div>
 
     <div class="grid">
-        <Project></Project>
-        <Project></Project>
-        <Project></Project>
-        <Project></Project>
+        { #each projects as info }
+            <Project data={ new CaseStudy(info) } />
+        {/each }
     </div>
 </section>
 

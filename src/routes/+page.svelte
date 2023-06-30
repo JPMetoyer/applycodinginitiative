@@ -349,10 +349,10 @@
 <script lang="ts">
     import Section from "../components/Section.svelte";
     import Project from "../cards/Project.svelte";
-    import events from "../data/projects.json";
-    import Work from "../models/work";
+    import events from "../data/portfolio.json";
+    import CaseStudy from "../models/casestudy";
 
-    const samples : Work[] = events.slice(0, 4).map((info) => new Work(info));
+    const samples : CaseStudy[] = events.slice(0, 4).map((info) => new CaseStudy(info));
 
     let portfolioIndex = 0;
 
@@ -414,7 +414,7 @@
         <div id="carousel">
         <div class="viewport" style="--reel-chip: calc((35vmax + 2rem) * -{ portfolioIndex })">
         { #each samples as event }
-            <div class="carrier"><Project event={ event } /></div>
+            <div class="carrier"><Project data={ new CaseStudy(event) } /></div>
         { /each }           
         </div>
         </div>

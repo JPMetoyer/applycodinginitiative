@@ -5,7 +5,7 @@
 
     @use "../variables" as app;
 
-    div.project {
+    a.project {
         width: 100%;
         border-radius: 0.8rem;
 
@@ -23,9 +23,9 @@
         }
 
         .info {
-            padding: 0.5rem 0.7rem;
+            padding: 0.6rem 1rem;
 
-            > p:nth-child(1) { font-weight: app.$weight-bold; }
+            > p:nth-child(1) { font-weight: app.$weight-bold; color: app.$color-foreground; }
         }
 
         .info > span {
@@ -38,20 +38,23 @@
 </style>
 
 <script lang="ts">
+    import type CaseStudy from "../models/casestudy";
 
+
+    export let data: CaseStudy;
 </script>
 
 
-<div class="project">
+<a href={ `/portfolio/${ data.id }` } class="project">
     <img src="/images/edm.jpg" alt="">
 
     <div class="info">
-        <p>Lorem ipsum dolor sit amet.</p>
+        <p>{ data.title }</p>
         <span>
-            <p>Marketing · EDM</p>
-            <p>Mombasa</p>
+            <p>{ data.company }</p>
+            <p>{ data.location }</p>
         </span>
     </div>
-</div>
+</a>
 
 

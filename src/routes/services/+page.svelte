@@ -54,7 +54,7 @@
                     display: flex;
                     align-items: center;
 
-                    > :global(div) { width: calc(92vw - 2rem); margin: 0px 0.5rem; }
+                    > :global(a) { width: calc(92vw - 2rem); margin: 0px 0.5rem; }
 
                 }
 
@@ -142,7 +142,7 @@
         </div>
 
         <div class="actions">
-            <button class="secondary">View Case Studies</button>
+            <a href="/portfolio" class="secondary button">View Case Studies</a>
         </div>
     </div>
 

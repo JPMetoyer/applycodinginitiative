@@ -1,40 +1,161 @@
-{
-    "highlights" : [
-        {
-            "title": "lorem",
-            "description": "lorem ipsum dolor sit amet", 
-            "impact": [
-                "$20,000 revenue/night",
-                "20% brand awareness",
-                "100 visitors"
-            ]
-        },
-        {
-            "title": "lorem",
-            "description": "lorem ipsum dolor sit amet", 
-            "impact": [
-                "$20,000 revenue/night",
-                "20% brand awareness",
-                "100 visitors"
-            ]
-        },
-        {
-            "title": "lorem",
-            "description": "lorem ipsum dolor sit amet", 
-            "impact": [
-                "$20,000 revenue/night",
-                "20% brand awareness",
-                "100 visitors"
-            ]
-        },
-        {
-            "title": "lorem",
-            "description": "lorem ipsum dolor sit amet", 
-            "impact": [
-                "$20,000 revenue/night",
-                "20% brand awareness",
-                "100 visitors"
-            ]
-        }
-    ]
-}
+[
+    {
+        "id": "redbull",
+        "company": "RedBull",
+        "logo": "/icons/redbull.png",
+        "title": "Revolutionize Your Energy",
+        "challenge": "Embracing the dual role of captivating the audience and strategically marketing Red Bull, 33Beats embraced the challenge of creating an unforgettable audio-visual extravaganza. With our expertise, professionalism, and goal-oriented mindset, we seamlessly merged entertainment and promotion, leaving a lasting impression and amplifying the brand's reach.",
+        "before": ["/images/festival.jpg", "/images/festival.jpg", "/images/festival.jpg"],
+        "after": ["/images/festival.jpg", "/images/festival.jpg", "/images/festival.jpg"],
+        "audience": "Our captivating audio-visual production by 33Beats targeted adrenaline-seeking individuals, trendsetters, and music enthusiasts. Leveraging our AV expertise, we orchestrated a multisensory experience that amplified Red Bull's brand message, heightened engagement, and propelled brand awareness to new heights, surpassing marketing challenges with electrifying success.",
+        "results": "The collaboration between 33Beats and Red Bull proved to be a resounding success. Our expertly crafted audio-visual performance not only captivated the target audience but also generated a buzz that resonated far beyond the event. The seamless integration of entertainment and marketing propelled Red Bull's brand awareness to unprecedented levels, solidifying 33Beats' reputation as a go-to solution for delivering unforgettable experiences with impactful results.",
+        "impact": [
+            "20% customer acquisition rate",
+            "$20,000 social media followers",
+            "$100,000 sales revenue"
+        ],
+        "location": "Vienna, AUS",
+        "reviews": [
+            {
+                "name": "Christian Jørgensenn",
+                "image": "/images/eren.png",
+                "title": "VP - Marketing",
+                "comment": "Working with 33Beats was a stroke of genius. Their audio-visual prowess seamlessly merged our brand message with entertainment, captivating our target audience and skyrocketing our brand awareness. Phenomenal collaboration!"
+            },
+            {
+                "name": "Christian Jørgensenn",
+                "image": "/images/eren.png",
+                "title": "Sales Executive",
+                "comment": "The collaboration with 33Beats proved instrumental in boosting our sales revenue. Their captivating audio-visual production grabbed attention, generated interest, and translated into increased conversions. A game-changer for our bottom line!"
+            },
+            {
+                "name": "Christian Jørgensenn",
+                "image": "/images/eren.png",
+                "title": "Event Coordinator",
+                "comment": "As the Event Coordinator, I couldn't be more thrilled with 33Beats' performance. Their expertise in audio-visual production created an immersive experience that left the audience buzzing and craving more"
+            }
+        ],
+        "thumbnail": "/images/festival.jpg",
+        "deliverables": ["Marketing", "Audio-Visual Production"]
+    },
+    {
+        "id": "heineken",
+        "company": "Heineken",
+        "logo": "/icons/heineken.png",
+        "title": "Sonic Celebration of Success",
+        "challenge": "At the forefront of the shareholder event for Heineken, 33Beats faced the exhilarating challenge of entertaining and captivating stakeholders. With our expertly curated performance, we orchestrated an unforgettable experience that celebrated success, fostered connections, and left a lasting impression on all attendees.",
+        "before": ["/images/festival.jpg", "/images/festival.jpg", "/images/festival.jpg"],
+        "after": ["/images/festival.jpg", "/images/festival.jpg", "/images/festival.jpg"],
+        "audience": "The shareholder event by 33Beats targeted esteemed stakeholders and industry influencers. Leveraging our AV expertise, we curated a mesmerizing audio-visual experience that immersed the audience in a world of celebration and connection. The seamless fusion of music, visuals, and technology ensured an unforgettable night of engagement and triumph.",
+        "results": "The partnership between 33Beats and Heineken proved to be a resounding success. Through our meticulously crafted shareholder event, we elevated the atmosphere, fostering a sense of celebration and unity. Our expertly designed audio-visual experience left attendees enthralled, creating an unforgettable evening that strengthened relationships and showcased Heineken's commitment to excellence",
+        "impact": [
+            "95% stakeholder satisfaction rating",
+            "500 social media mentions",
+            "10 media outlet coverage"
+        ],
+        "location": "Amsterdam, NED",
+        "reviews": [
+            {
+                "name": "Christian Jørgensenn",
+                "image": "/images/eren.png",
+                "title": "Chief Marketing Officer",
+                "comment": "The collaboration with 33Beats for our shareholder event was pure magic. Their audio-visual mastery created an immersive experience that left a lasting impression on our stakeholders. An extraordinary partnership indeed!"
+            },
+            {
+                "name": "Christian Jørgensenn",
+                "image": "/images/eren.png",
+                "title": "Director - Investor Relations",
+                "comment": "As the Director of Investor Relations, I was blown away by 33Beats' performance. They artfully combined music and visuals, captivating our shareholders and igniting their passion for our company. A remarkable achievement!"
+            },
+            {
+                "name": "Christian Jørgensenn",
+                "image": "/images/eren.png",
+                "title": "Event Planning Manager",
+                "comment": "Working with 33Beats was a game-changer for our shareholder event. Their expertise in audio-visual production elevated the entire experience, making it memorable, engaging, and truly exceptional. We couldn't have asked for a better partner!"
+            }
+        ],
+        "thumbnail": "/images/festival.jpg",
+        "deliverables": ["Event Entertainment", "Branding"]
+    },
+    {
+        "id": "ferrari",
+        "company": "Ferrari",
+        "logo": "/icons/ferrari.png",
+        "title": "Unleashing Elegance and Power",
+        "challenge": "At the forefront of the product launch event for Ferrari, 33Beats faced the exhilarating challenge of showcasing the new generation of the Ferrari Tribuno in a way that ignited passion and captivated the audience. Our expertly curated performance set the stage for an unforgettable experience, unveiling the epitome of Italian luxury and automotive excellence.",
+        "before": ["/images/festival.jpg", "/images/festival.jpg", "/images/festival.jpg"],
+        "after": ["/images/festival.jpg", "/images/festival.jpg", "/images/festival.jpg"],
+        "audience": "The product launch event targeted automotive enthusiasts, luxury car aficionados, and industry influencers. Leveraging our AV expertise, we orchestrated a captivating audio-visual experience that immersed the audience in the essence of automotive excellence, generating excitement, media coverage, and widespread awareness for the stunning new Ferrari Tribuno.",
+        "results": "The collaboration between the luxury car manufacturer and the event team proved to be a resounding success. The meticulously planned product launch event for the Ferrari Tribuno garnered widespread acclaim, generating buzz, media coverage, and elevating the brand's reputation as a symbol of automotive innovation and elegance.",
+        "impact": [
+            "36% rise in website traffic",
+            "100 media outlet coverages",
+            "50,000 social media engagements"
+        ],
+        "location": "Rome, ITY",
+        "reviews": [
+            {
+                "name": "Christian Jørgensenn",
+                "image": "/images/eren.png",
+                "title": "Marketing Director",
+                "comment": "Our partnership with 33Beats was a game-changer. Their mastery of music and visuals brought our brand to life, creating an immersive experience that resonated with our target audience. Phenomenal collaboration!"
+            },
+            {
+                "name": "Christian Jørgensenn",
+                "image": "/images/eren.png",
+                "title": "Brand Manager",
+                "comment": "The collaboration with 33Beats added a dynamic element to our brand activations. Their innovative approach to music and visuals captured attention, engaged our audience, and amplified our brand message. A resounding success!"
+            },
+            {
+                "name": "Christian Jørgensenn",
+                "image": "/images/eren.png",
+                "title": "Director of Events",
+                "comment": "Working with 33Beats was a breath of fresh air. Their expertise in audio-visual production elevated our events to new heights, creating unforgettable experiences that left attendees buzzing with excitement. Exceptional results!"
+            }
+        ],
+        "thumbnail": "/images/festival.jpg",
+        "deliverables": ["Product Launch", "Social Media"]
+    },
+    {
+        "id": "guinness",
+        "company": "Guinness",
+        "logo": "/icons/guinness.png",
+        "title": "Savoring Kenyan Journey",
+        "challenge": "At the forefront of the company outreach event for Guinness, the challenge for the event team was to aid in brand identity development to establish and strengthen Guinness' position in the Kenyan market. By delivering a captivating performance, 33Beats helped infuse the event with the essence of Guinness, elevating its presence and resonating with the target audience.",
+        "before": ["/images/festival.jpg", "/images/festival.jpg", "/images/festival.jpg"],
+        "after": ["/images/festival.jpg", "/images/festival.jpg", "/images/festival.jpg"],
+        "audience": "The outreach event targeted beer enthusiasts, cultural influencers, and Kenyan consumers seeking memorable experiences. Leveraging their AV expertise, the team at hand curated a captivating audio-visual performance that immersed the audience in the rich legacy of Guinness, generating awareness, fostering brand affinity, and leaving a lasting impact on attendees.",
+        "results": "The collaborative project between Guinness and the event team proved to be an astounding success. The meticulously planned outreach event effectively conveyed Guinness' brand identity and rich heritage, resonating with the target audience and strengthening its presence in the Kenyan market. The immersive audio-visual experience created by the team captivated attendees, generated widespread awareness for Guinness, and left a lasting impression, establishing the brand as a key player in the local beer industry.",
+        "impact": [
+            "20% merchandise sales",
+            "10,000 new social media followers",
+            "50% mentions in digital platforms"
+        ],
+        "location": "Naivasha, KEN",
+        "reviews": [
+            {
+                "name": "Christian Jørgensenn",
+                "image": "/images/eren.png",
+                "title": "Regional Executive Director",
+                "comment": "Our collaboration with 33Beats was a stroke of genius. Their fusion of music and visuals flawlessly complemented Guinness' essence, capturing the hearts of our audience and reinforcing our brand's authenticity. A remarkable partnership!"
+            },
+            {
+                "name": "Christian Jørgensenn",
+                "image": "/images/eren.png",
+                "title": "VP - Marketing",
+                "comment": "Working with 33Beats was an absolute delight. Their audio-visual expertise elevated our event, creating an immersive experience that resonated with attendees and showcased the soul of Guinness. A resounding success!"
+            },
+            {
+                "name": "Christian Jørgensenn",
+                "image": "/images/eren.png",
+                "title": "Brand Manager",
+                "comment": "The partnership with 33Beats brought Guinness to life in captivating ways. Their seamless integration of music and visuals resonated deeply with our consumers, solidifying our brand's presence and igniting excitement. An extraordinary collaboration!"
+            }
+        ],
+        "thumbnail": "/images/festival.jpg",
+        "deliverables": ["Marketing", "Event Entertainment"]
+    }
+
+
+
+]
