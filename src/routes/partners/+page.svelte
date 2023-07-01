@@ -10,7 +10,7 @@
         grid-template-columns: 1fr 2fr 1fr;
         grid-template-rows: 1fr;
         gap: 1rem 1rem; 
-        height: calc(100vh - 6rem);
+        height: calc(100svh - 6rem);
 
 
         @media screen and (max-width: 960px) {
