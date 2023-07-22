@@ -22,6 +22,7 @@
 
 
 <main style={ `padding: 0px 0vw` }>
+    <Hero />
     <About />
 
     <Guides />
