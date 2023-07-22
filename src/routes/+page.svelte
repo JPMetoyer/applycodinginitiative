@@ -1,5 +1,12 @@
 
+<script>
+    import Hero from "../home/hero.svelte";
+    import Partners from "../home/partners.svelte";
 
+</script>
 
-<h1>Landing page</h1>
+<main style={ `padding: 0px 4vw` }>
+    <Hero />
+
+</main>
 

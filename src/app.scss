@@ -33,15 +33,13 @@ html {
 }
 
 body {
-    padding-top: 4rem;
+    padding-top: 1rem;
 }
 
 main {
-    min-height: calc(100vh - 4rem);
-}
-
-main > section {
-    height: calc(100vh - 6rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 h1 {

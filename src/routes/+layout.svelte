@@ -18,7 +18,7 @@
 
         padding: 0.3rem 1rem; 
         background-color: app.$color-background;
-        border-bottom: 0.5px dashed red;
+        border-bottom: 0.5px dashed app.$color-brand;
 
 
 
@@ -111,14 +111,8 @@
         </Icon>
     </span>
 </nav>
+    
+<slot></slot>
 
-<main style={ `padding: 0px ${ padding ? 4 : 0 }vw` }>
-    <slot></slot>
-</main>
-
-
-<footer>
-
-</footer>
 
 

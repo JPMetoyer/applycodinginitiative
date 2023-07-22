@@ -5,7 +5,7 @@
 
     @use "../variables" as app;
 
-    div.project {
+    a.project {
         width: 100%;
         border-radius: 0.8rem;
 
@@ -31,8 +31,6 @@
         .info > span {
             display: flex;
             justify-content: space-between;
-
-            
         }
     }
 </style>
@@ -42,7 +40,7 @@
 </script>
 
 
-<div class="project">
+<a href="/" class="project">
     <img src="/images/edm.jpg" alt="">
 
     <div class="info">
@@ -52,6 +50,6 @@
             <p>Mombasa</p>
         </span>
     </div>
-</div>
+</a>
 
 
