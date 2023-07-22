@@ -57,13 +57,9 @@
 <Bisect>
 
     <div class="info">
+        <h3>Lorem ipsum dolor sit amet.</h3>
+
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id accusamus laudantium ad illo aliquid molestiae quaerat ratione mollitia deserunt deleniti, expedita in perferendis asperiores at corrupti porro quis quo vel aperiam voluptatem.</p>
-
-        <h5>Brought to you by:</h5>
-        <div class="partners">
-            <span></span><span></span><span></span>
-        </div>
-
     </div>
 
     <div class="graphic">

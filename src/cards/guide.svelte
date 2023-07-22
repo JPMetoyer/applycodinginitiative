@@ -63,7 +63,7 @@
 
 
 <script lang="ts">
-    import { getRandomNumber } from "../functions/random";
+    import { getRandomNumber } from "../functions/gui";
 
 
     import Bacterial from "../types/bacterial.svelte";

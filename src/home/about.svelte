@@ -33,10 +33,13 @@
             gap: 0.5rem;
 
             span {
-                width: 2.4rem;
-                height: 2.4rem;
-                background-color: pink;
+                width: 2.8rem;
+                height: 2.8rem;
                 border-radius: 3rem;
+
+                padding: 0.5rem 0.5rem;
+                background-color: hsl(206, 14%, 95%);
+                filter: drop-shadow(0.3rem 0.3rem 1rem rgba(40, 42, 54, 0.05));
             }
         }
     }
@@ -62,7 +65,9 @@
 
         <h5>Brought to you by:</h5>
         <div class="partners">
-            <span></span><span></span><span></span>
+            <span><img src="/icons/afyadux.png" alt=""></span>
+            <span><img src="/icons/microsoft.png" alt=""></span>
+            <span><img src="/icons/wci.png" alt=""></span>
         </div>
 
     </div>
