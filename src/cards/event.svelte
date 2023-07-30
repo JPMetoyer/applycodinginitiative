@@ -16,6 +16,10 @@
         background-color: app.$color-background;
         filter: drop-shadow(0rem 1rem 3rem rgba(40, 42, 54, 0.08));
 
+        transition-property: transform, opacity;
+        transition-duration: 400ms;
+        transition-timing-function: ease-in;
+
         > img {
             width: 100%;
             border-radius: 0.8rem 0.8rem 0px 0px;
@@ -36,11 +40,11 @@
 </style>
 
 <script lang="ts">
-
+    export let style : string = "";
 </script>
 
 
-<a href="/" class="project">
+<a href="/" class="project" style={ style }>
     <img src="/images/edm.jpg" alt="">
 
     <div class="info">

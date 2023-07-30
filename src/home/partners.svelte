@@ -6,7 +6,7 @@
 
     section#partners {
         position: relative;
-        height: 250vh;
+        height: 300vh;
 
         border-top: 1px solid black;
 
@@ -93,8 +93,8 @@
     import { clamp, round } from "../functions/gui";
     import organizations from "../data/partners.json";
     
-    const entryScrollPosition : number = 2090;
-    const exitScrollPosition : number = 3260;
+    const entryScrollPosition : number = 2670;
+    const exitScrollPosition : number = 4230;
     const scrollDistance : number = exitScrollPosition - entryScrollPosition;
 
     let scrollPosition : number = 0;
@@ -131,11 +131,7 @@
 
         <p>{ organizations[(scrollPercent < 0.33) ? 0 : (scrollPercent < 0.66) ? 1 : 2].description }</p>
     </div>
-    
-    
-
-    
+        
 </section>
-
 
 

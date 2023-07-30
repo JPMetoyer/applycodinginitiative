@@ -1,182 +1,238 @@
 
 
+
+
 <style lang="scss">
+
     @use "../variables" as app;
 
-    section#hero {
-        position: relative;
-        height: calc(100svh - 4rem);
-        padding: 0rem 0px;
-        
 
+    #showcase {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 2fr;
-        gap: 1rem 2.2rem;
+        grid-template-rows: 0.5fr 2.1fr 1fr;
+        gap: 1rem 1rem;
+        height: calc(100svh - 4rem);
+        padding-bottom: 1rem;
 
-
-        > div.info {
+        > #descriptor {
             display: flex;
             flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
             gap: 0.5rem;
 
-            margin: auto 0px;
-            padding: 0px 4vw; 
+            padding: 0px 6vw;
         }
 
-        > div.highlights {
-            margin-bottom: 3rem;
-
+        > div:nth-child(2) {
             position: relative;
 
-            > div.scrollview {
+
+            div.carousel {
                 position: relative;
-                height: calc(100% - 4rem);
-                width: 100vw;
-                margin-bottom: 2rem;
+                overflow: hidden hidden;
+                top: 0px;
+                left: 0px;
+                bottom: 1rem;
+                right: 0px;
 
-                overflow: hidden;
+                width: 100%;
+                height: 100%;
 
-                div.content {
+                &::-webkit-scrollbar { display: none; }
+                -ms-overflow-style: none;  /* IE and Edge */
+                scrollbar-width: none;
+
+
+                > div.viewport {
                     position: absolute;
-                    top: 45%;
+                    top: 50%;
+                    left: 0px;
+                    padding: 0px 1.5rem 2rem 1.5rem;
                     transform: translateY(-50%);
-                    padding: 0px 8vw;
+
+                    @media screen and (min-width: 640px) {
+                        padding: 0px calc(46vw - 18rem);
+                    }
 
                     display: flex;
-                    align-items: center; 
-                    justify-content: flex-start;
+                    align-items: center;
 
-                    gap: 0.5rem;
+                    > :global(a) {
+                        width: calc(92vw - 2rem);
+                        max-width: 36rem;
+                        margin: 0px 0.5rem;
+
+                        @media screen and (min-width: 640px) {
+                            margin: 0px calc(0.5rem + 2vw);
+                        }
+
+                    }
 
                 }
 
-
-                div.carrier {
-                    width: 80vw; 
-                    height: 45vw;
-                    background-color: gray;
-                    border-radius: 1rem;
-
-                    &:nth-child(2) { transform: scale(0.9); }
-                }
             }
 
-            > span {
+            div.actions {
                 position: absolute;
-                bottom: 2.5rem;
-                left: 50%;
-                transform: translateX(-50%);
-                
+                bottom: 0px; 
+                left: 0px;
+                right: 0px;
+
                 display: flex;
+                justify-content: center;
                 gap: 1rem;
             }
+
         }
 
+        > div:nth-child(3) {
+            position: relative;
+            margin: 0px 6vw; 
+            padding-top: 0.5rem;
 
-        > div.transitional {
-            position: absolute;
-            bottom: 0px;
-            left: 0px;
-            right: 0px;
-            padding: 1.5rem 1.5rem;
+            > p > span {
+                @media screen and (max-width: 960px) {
+                    display: none;
+                };
+            }
 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
 
-            > div.pagination {
+            div.pagination {
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
                 gap: 0.5rem;
+
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                margin: 0.5rem 0px; 
                 
                 span {
+                    position: relative;
                     width: 0.4rem;
                     height: 0.4rem;
-                    background-color: app.$color-gray;
+                    background-color: hsl(240, 16%, 70%);
                     border-radius: 1rem;
+
+                    &.focus {
+                        margin: 0px 0.6rem;
+                        background-color: app.$color-brand;
+                    }
+
+                    &.focus::after {
+                        content: "";
+                        position: absolute;
+                        z-index: 2;
+                        top: 50%;
+                        left: 50%;
+                        transform: translateX(-50%) translateY(-50%);
+                        
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        border-radius: 100%;
+                        border: 1px solid app.$color-brand;
+                    }
 
                 };
             }
 
-            > div.arrows {
+            div.arrows {
+                position: absolute;
+                bottom: 0px;
+                right: 0px;
+                margin: 0.5rem 0px; 
+
                 display: flex;
                 align-items: center;
-                justify-content: flex-end;
-                gap: 0.8rem;
+                justify-content: center;
 
+                gap: 0.5rem;
                 fill: transparent;
             }
         }
-
     }
-
 </style>
 
+
+
+
 <script lang="ts">
-    import { onMount } from "svelte";
+    import Event from "../cards/event.svelte";
     import Icon from "../components/Icon.svelte";
 
 
     let focus: number = 0;
-    const events = Array(5);
+    let highlights = Array(4);
 
     let viewportWidth: number = 0;
 
+    $: computeStyle = (index: number) : string => {
 
-    const computeStyle = (index: number) : string => {
 
-        const value : string = (index < focus) ?
-            `matrix(0.9, 0, 0, 0.9, -${ (0.8 * viewportWidth)  * index }, 0)` :
-            `matrix(1, 0, 0, 1, -${ (0.8 * viewportWidth) * focus }, 0)`;
+    const value : string = (index < focus) ?
+        `transform: matrix(0.9, 0, 0, 0.9, -${ (0.95 * viewportWidth)  * index }, 0); opacity: 0%` :
+        `transform: matrix(1, 0, 0, 1, -${ (0.88 * viewportWidth) * focus }, 0); opacity: 100%`;
 
         return value;
     }
 
-    
     const incrementFocus = () => { focus++; }
-    const decrementFocus = () => { focus--; }
+    const decrementFocus = () => {  focus-- }
 
 </script>
 
+
 <svelte:window bind:innerWidth={ viewportWidth } />
 
-<section id="hero">
-    <div class="info">
-        <h2>Lorem ipsum dolor sit amet.</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae dolore atque porro temporibus, beatae voluptatem possimus sint minus, consectetur et itaque!</p>
+<main style="padding: 0px 0px">
+<article id="showcase">
+    <div id="descriptor">
+        <h1 class="tagline">Boost your Business</h1>
+        <p class="instructions">Tap to select</p>
     </div>
 
-    <div class="highlights">
-        <div class="scrollview">
-        <div class="content">
-            { #each events as event, index }
-                <div class="carrier" style={ computeStyle(index) } ></div>
+
+    <div>
+        <div class="carousel">
+        <div class="viewport">
+            { #each highlights as info, index }
+            <Event style={ computeStyle(index) } />
             {/each }
         </div>
         </div>
-        
 
-        <span>
-            <a class="secondary button" href="/">See All</a>
-            <a class="tertiary button" href="/">Learn How</a>
-        </span>
+        <div class="actions">
+            <button class="secondary">All Events</button>
+        </div>
     </div>
 
-    <div class="transitional">
+    <div>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, ducimus. Modi repellat error, fugiat doloremque reprehenderit obcaecati adipisci!
+            <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat mollitia nobis ullam, dolor quasi dignissimos perspiciatis. Cumque quibusdam tempora id dolorum commodi</span>
+        </p>
+
         <div class="pagination">
-            <span></span><span></span><span></span><span></span><span></span>
+            { #each highlights as _, index }
+                <span class={ (index === focus) ? "focus" : "" } ></span>
+            {/each }
         </div>
 
         <div class="arrows">
-            <Icon onClick={ decrementFocus }>
+            <Icon disabled={ focus === 0 } onClick={ decrementFocus }>
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.57 5.93005L3.5 12.0001L9.57 18.0701" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20.5 12H3.66998" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </Icon>
     
-            <Icon onClick={ incrementFocus }>
+            <Icon disabled={ focus === (highlights.length - 1) } onClick={ incrementFocus }>
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.43 5.93005L20.5 12.0001L14.43 18.0701" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.5 12H20.33" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </Icon>
         </div>
     </div>
-</section>
+</article>
+</main>
+
+
+

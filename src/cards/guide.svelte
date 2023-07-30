@@ -13,7 +13,7 @@
 
         display: flex; 
         flex-direction: column;
-        gap: 2rem;
+        gap: 4rem;
         padding: 1rem 1rem;  
 
         background-color: hsl(var(--hue), 50%, 98%, 1);
