@@ -51,6 +51,7 @@
     import Icon from "../../components/Icon.svelte";
     import projects from "../../data/portfolio.json";
     import Guide from "../../cards/guide.svelte";
+    import Footer from "../../elements/footer.svelte";
 
 
     const highlights = Array(4);
@@ -74,3 +75,6 @@
     </div>
 </section>
 </main>
+
+<Footer />
+

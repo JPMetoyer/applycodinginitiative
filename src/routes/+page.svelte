@@ -16,7 +16,7 @@
     import Faq from "../home/faq.svelte";
     import Guides from "../home/guides.svelte";
     import Hero from "../home/hero.svelte";
-    import Partners from "../home/partners.svelte";
+    import Process from "../home/process.svelte";
 
 </script>
 
@@ -27,7 +27,7 @@
 
     <Guides />
     <Detail />
-    <Partners />
+    <Process />
     <Faq />
 
     <Footer />

@@ -21,6 +21,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"firebase": "^8.6.8",
 		"scss": "^0.2.4"
 	}
 }

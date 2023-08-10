@@ -98,6 +98,11 @@ button, a {
     text-decoration: none;
 }
 
+button:disabled {
+    background-color: app.$color-shade;
+    cursor: regular;
+}
+
 a {
     color: app.$color-foreground;
 }

@@ -30,9 +30,53 @@
         }
 
         .links {
+
+            z-index: 4;
             
-            display: none;
-            // display: flex; 
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            height: 3.5rem;
+            background-color: app.$color-background;
+            // background-color: red;
+
+            .trailer {
+                
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                right: 0px;
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                padding: calc(0px + 1.5rem) 6vw;
+
+            }
+
+            @media screen and (max-width: 640px) {
+                &.show {
+                }
+
+                height: 0dvh;
+                opacity: 0%;
+
+
+                flex-direction: column;
+                align-items: flex-start;
+
+                padding: 0px 8vw;
+                gap: 2rem; 
+
+                > a {
+                    font-size: 200%;
+                }
+            }
+            
+
+            display: flex; 
             align-items: center; 
             justify-content: center; 
             gap: 1.5rem;
@@ -63,22 +107,28 @@
 
 </style>
 
-<script>
+<script lang="ts">
     import { goto } from "$app/navigation";
     import "../app.scss";
 
     import { page } from '$app/stores';
     import Icon from "../components/Icon.svelte";
+    import { onMount } from "svelte";
     const padding = ($page.route.id !== "/partners");
 
+    let linksElement : HTMLDivElement;
 
-    const handleMenuClick = () => {
+    onMount(() => {
+        linksElement.onclick = () => {
+            linksElement.classList.remove("menu");
+        };
+    });
 
-    }
+
+
+
 
 </script>
-
-
 
 <nav>
     <a href="/" id="logo">
@@ -86,6 +136,18 @@
         <path d="M31.6541 58.8698C49.2384 58.8698 58.8547 44.3016 58.8547 31.6693C58.8547 31.2554 58.8462 30.8436 58.8271 30.4334C60.6936 29.0841 62.3164 27.3999 63.5963 25.4835C61.8834 26.2446 60.0402 26.757 58.1063 26.9881C60.0799 25.8047 61.5956 23.9318 62.3106 21.6996C60.4631 22.795 58.4174 23.591 56.2403 24.0203C54.4951 22.1622 52.0107 21 49.2617 21C43.9817 21 39.7001 25.2816 39.7001 30.559C39.7001 31.3094 39.7843 32.0387 39.9476 32.7388C32.0028 32.3397 24.9575 28.5351 20.2429 22.751C19.4209 24.1634 18.9476 25.8052 18.9476 27.5557C18.9476 30.8722 20.6356 33.8003 23.2022 35.5137C21.634 35.4654 20.1607 35.0341 18.8724 34.3175C18.8703 34.3573 18.8703 34.3976 18.8703 34.4394C18.8703 39.0697 22.1661 42.9353 26.5399 43.8114C25.737 44.0302 24.8923 44.1479 24.0199 44.1479C23.4041 44.1479 22.8053 44.0864 22.2228 43.9757C23.4396 47.7734 26.9692 50.5377 31.1538 50.6156C27.8813 53.1801 23.7592 54.708 19.2804 54.708C18.5093 54.708 17.7483 54.664 17 54.5755C21.2307 57.2868 26.2543 58.8698 31.6541 58.8698Z"/>
         </svg>            
     </a>
+
+    <div class="links" bind:this={ linksElement } >
+        <a href="/">Why</a>
+        <a href="/">Events</a>
+        <a href="/">Guides</a>
+        <a href="/">Health</a>
+
+        <div class="trailer">
+            <p>Copyright &copy; 2023</p>
+            <p>Afyadux</p>
+        </div>
+    </div>
 
     <span>
         <a href="/events" id="cta" class="button">
@@ -95,7 +157,7 @@
             </svg>
         </a>
 
-        <Icon frame={[ 2, 2 ]} onClick={ handleMenuClick }>
+        <Icon frame={[ 2, 2 ]} onClick={ () => { linksElement.classList.toggle("show"); }}>
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M5 17H19" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M5 12H19" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

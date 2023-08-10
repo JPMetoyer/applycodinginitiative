@@ -19,6 +19,8 @@
         display: flex;
         flex-direction: column;
 
+        > h2 { margin-bottom: 1rem; }
+
         > h5 {
             font-weight: app.$weight-bold;
             margin-top: 2.5rem;
@@ -61,6 +63,7 @@
 
 
     <div class="info">
+        <h2>Lorem ipsum dolor sit amet.</h2>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id accusamus laudantium ad illo aliquid molestiae quaerat ratione mollitia deserunt deleniti, expedita in perferendis asperiores at corrupti porro quis quo vel aperiam voluptatem.</p>
 
         <h5>Brought to you by:</h5>

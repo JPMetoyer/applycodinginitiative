@@ -190,8 +190,8 @@
 <main style="padding: 0px 0px">
 <article id="showcase">
     <div id="descriptor">
-        <h1 class="tagline">Boost your Business</h1>
-        <p class="instructions">Tap to select</p>
+        <h1 class="tagline">Lorem ipsum dolor sit.</h1>
+        <p class="instructions">Lorem ipsum dolor sit amet consectetur.</p>
     </div>
 
 
