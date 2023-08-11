@@ -357,8 +357,8 @@
             <p>A few things to keep in mind: </p>
             <span class="list">
                 <p>Deadline to submit this application is <b>Aug 14, 2023</b>, since schedules cannot be changed after the first two weeks :(</p>
-                <p class="point">Club meetings will be during Study Hall (2nd for Underclassmen, and 6th for Upperclassmen); if you are a part of a club/class that does activities during your StudyHall, like the Yearbook Club, you will have to choose where you would prefer to spend your time</p>
-                <p class="point">Competing through the Coding Initiatitve is merit-based, so your web design competitions will be paid for by us if you excel! However, we will still teach Web Development during 6th period, no matter if you are competing or just want to learn.</p>
+                <p class="point">Club meetings will be during Study Hall (2nd for Underclassmen, and 6th for Upperclassmen); if you are a part of a club/class that does activities during your Study Hall, like the Yearbook Club, you will have to choose where you would prefer to spend your time</p>
+                <p class="point">Competing through the Coding Initiatitve is merit-based, so your web design competitions will be paid for by us if you are amongst the best in 2/6th Period! However, we will still teach Web Development during 6th period, no matter if you are competing or just want to learn.</p>
                 <p class="point">The cohort resets each year; <b>so previous members also have to apply</b>. This is to give students who are no longer interested an opportunity to go back to their normal scheduling, and new students who are interested a chance to join</p>
                 <p>The club uses a blind selection process, meaning identifying information like name or ID number will be removed from review</p>
             </span>
