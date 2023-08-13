@@ -4,7 +4,7 @@
     @use "../variables" as app;
 
     h1 { font-size: 160%; font-weight: app.$weight-black; }
-    p.bold, b { font-weight: app.$weight-bold; }
+    b { font-weight: app.$weight-bold; }
 
     span.list {
         display: flex;
@@ -42,7 +42,7 @@
             @media screen and (min-width: 960px) {
                 position: fixed;
                 top: 4rem;
-                width: calc(50vw - 3vw);
+                width: calc(45vw - 3vw);
                 height: 100vh;
             }
 
@@ -97,7 +97,7 @@
 
             @media screen and (min-width: 960px) {
                 width: 50%;
-                margin-right: 8vw;
+                margin-right: 2rem;
                 margin-left: 50vw;
             }
         }
@@ -135,6 +135,11 @@
             }
 
             input[type=radio] { display: none; }
+
+            div.email.error {
+                input { border: 1px solid app.$color-error };
+                p { color: app.$color-error; font-size: 90%; margin-left: 0.5rem; margin-top: 0.2rem; };
+            }
 
             > div.options {
                 display: flex;
@@ -236,53 +241,13 @@
             }
         }
 
-        article > div.options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr;
-            gap: 1rem 1rem;
-
-            button.item {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-end;
-                gap: 1rem; 
-                border-radius: 0.8rem;
-                background-color: app.$color-background;
-
-                padding: 1.5rem 1rem 0.65rem 1rem;
-                fill: transparent;
-                width: unset;
-                flex-grow: 1;
-
-                border: 1px dashed app.$color-shade;
-
-                transition-property: box-shadow;
-                transition-duration: 300ms;
-                transition-timing-function: ease-in;
-
-                &.checked {
-                    border: 1px dashed transparent;
-                    box-shadow: 0rem 0rem 1.5rem rgba(40, 42, 54, 0.08);
-
-                    > p { color: app.$color-foreground; }
-                }
-
-                > p { 
-                    text-align: end; 
-                    font-weight: app.$weight-bold;
-                    color: app.$color-gray;
-                }
-
-            }
-        }
     }
 </style>
 
 <script lang="ts">
     import { onMount } from "svelte";
     import Deliverable from "../cards/Deliverable.svelte";
-
+    import { NotificationState, sendNotification } from "../lib/utilities";
 
 
     let viewportHeight : number = 0;
@@ -299,13 +264,19 @@
     let interest: string;
     let successfulYear: string;
     let favoriteCartoon: string;
-    let pineapplePizza: string;
+    let pineapplePizza: String;
+
+    let formElement: HTMLFormElement;
+    let emailElement: HTMLInputElement;
+
+    let emailError : string = "";
 
     $: submittable = 
         (streamOption != undefined) &&
         (name != "") && (name != undefined) &&
         (idNumber != null) &&
         (email != "") && (email != undefined) &&
+        (emailError === "") &&
 
         (interest != "") && (interest != undefined) &&
         (successfulYear != "") && (successfulYear != undefined) &&
@@ -313,10 +284,43 @@
         (pineapplePizza != "") && (pineapplePizza != undefined)
         ; 
 
-
-    const submitForm = () => {
-
+    const onFinishEditEmail = async () => {
+        if (email.endsWith("students.springisd.org") === false && email !== "") { emailError = "Use your correct school email"; return }
+        emailError = "";
     }
+
+
+    const submitForm = async () => {
+
+        if (idNumber.toString().length !== 8) {
+            sendNotification({ message: "Your ID Number must be 8 digits long", type: NotificationState.error });
+            return;
+        }
+
+        const data = JSON.stringify({
+            stream: streamOption,
+            name: name,
+            ID: idNumber,
+            email: email,
+
+            interest: interest,
+            successfulYearDescription: successfulYear,
+            cartoon: favoriteCartoon,
+            pizza: pineapplePizza
+
+        });
+
+        const action = await fetch(`https://codinginitiative.org/api`, {
+            method: "POST",
+            headers: { "Content-Type": 'application/json' },
+            body: data
+        });
+
+        if (formElement !== undefined) { formElement.reset() } 
+
+        sendNotification({ message: "Application sent successfully :)", type: NotificationState.success });
+    }
+
 </script>
 
 <svelte:window bind:innerHeight={ viewportHeight } />
@@ -325,8 +329,8 @@
 <section id="contact">
 
     <div id="canvas">
-        <Deliverable active={ streamOption === "underclassman" } image={ "/images/design.png" } />
-        <Deliverable active={ streamOption === "upperclassman" } image={ "/images/development.png" } />
+        <Deliverable active={ streamOption === "underclassman" } image={ "" } />
+        <Deliverable active={ streamOption === "upperclassman" } image={ "" } />
 
         <span class="check horizontal">
             { #each Array(rows) as _ }
@@ -358,14 +362,13 @@
             <span class="list">
                 <p>Deadline to submit this application is <b>Aug 14, 2023</b>, since schedules cannot be changed after the first two weeks :(</p>
                 <p class="point">Club meetings will be during Study Hall (2nd for Underclassmen, and 6th for Upperclassmen); if you are a part of a club/class that does activities during your Study Hall, like the Yearbook Club, you will have to choose where you would prefer to spend your time</p>
-                <p class="point">Competing through the Coding Initiatitve is merit-based, so your web design competitions will be paid for by us if you are amongst the best in 2/6th Period! However, we will still teach Web Development during 6th period, no matter if you are competing or just want to learn.</p>
                 <p class="point">The cohort resets each year; <b>so previous members also have to apply</b>. This is to give students who are no longer interested an opportunity to go back to their normal scheduling, and new students who are interested a chance to join</p>
                 <p>The club uses a blind selection process, meaning identifying information like name or ID number will be removed from review</p>
             </span>
         </div>
 
         
-        <form on:submit={ submitForm } action="" method="get">
+        <form bind:this={ formElement } action="https://codinginitiative.org/api" on:submit|preventDefault={ submitForm } method="post">
             <div class="description">
                 <h3> Are you a underclassman over upperclassman?</h3>
                 <p>Please keep in mind this will be used to change your class schedule and will take effect for the whole school year. <br><br> 9th and 10th will be at Mr. Neal, 11th and 12th at Ms. Gereke</p>
@@ -388,7 +391,11 @@
 
             <input bind:value={ name } type="text" placeholder="Your Name" name="name">
             <input bind:value={ idNumber } pattern="\d*" type="number" name="id" placeholder="ID Number">
-            <input bind:value={ email } type="email" name="email" placeholder="youremail@springisd.students.org">
+
+            <div class={ (emailError === "") ? "email" : "email error" }>
+                <input on:blur={ onFinishEditEmail } bind:this={ emailElement } bind:value={ email } type="email" name="email" placeholder="youremail@springisd.students.org">
+                <p>{ emailError }</p>
+            </div>
 
             <br>
 
@@ -424,7 +431,7 @@
             </div>
 
             <span>
-                <button disabled={ submittable === false } type="submit">{ submittable ? "Submit" : "Fill in all information" }</button>
+                <button type="submit" disabled={ submittable === false }>{ submittable ? "Submit" : "Fill in all information" }</button>
             </span>
         </form>
     </article>

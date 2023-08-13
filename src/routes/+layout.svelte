@@ -40,58 +40,7 @@
             } 
         }
 
-        .links {
-
-            z-index: 4;
-            
-            position: fixed;
-            bottom: 0px;
-            left: 0px;
-            right: 0px;
-            height: 3.5rem;
-            background-color: app.$color-background;
-            // background-color: red;
-
-            .trailer {
-                
-                position: absolute;
-                bottom: 0px;
-                left: 0px;
-                right: 0px;
-
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-
-                padding: calc(0px + 1.5rem) 6vw;
-
-            }
-
-            @media screen and (max-width: 640px) {
-                &.show {
-                }
-
-                height: 0dvh;
-                opacity: 0%;
-
-
-                flex-direction: column;
-                align-items: flex-start;
-
-                padding: 0px 8vw;
-                gap: 2rem; 
-
-                > a {
-                    font-size: 200%;
-                }
-            }
-            
-
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 1.5rem;
-        }
+        
 
         #cta {
             position: relative;
@@ -118,29 +67,71 @@
         }
     }
 
+    section#toast {
+        z-index: 10;
+
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        height: 100dvh;
+
+        background-color: transparent;
+        pointer-events: none;
+
+        p {
+            position: absolute;
+            bottom: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            transition-property: bottom;
+            transition-duration: 700ms;
+            transition-timing-function: ease-in;
+
+            color: app.$color-background;
+            box-shadow: 0rem 0rem 1.5rem rgba(40, 42, 54, 0.08);
+
+            padding: 0.25rem 2rem;
+            border-radius: 2rem;
+
+            &.show {
+                bottom: 3rem;
+            }
+        }
+    }
+
 </style>
 
 <script lang="ts">
-    import { goto } from "$app/navigation";
+
     import "../app.scss";
 
     import { page } from '$app/stores';
-    import Icon from "../components/Icon.svelte";
-    import { onMount } from "svelte";
-    const padding = ($page.route.id !== "/partners");
+    import { NotificationState, notification, sendNotification } from "../lib/utilities";
+    
 
-    let linksElement : HTMLDivElement;
+    $: color = () => { 
 
-    onMount(() => {
-        linksElement.onclick = () => {
-            linksElement.classList.remove("menu");
-        };
-    });
+        if ($notification === undefined) { return "transparent"; }
 
+        switch ($notification.type) {
+            case NotificationState.info:
+                return "#3361FF";
 
+            case NotificationState.error:
+                return "#FF5E6E";
 
+            case NotificationState.warning:
+                return "#FF8800";
 
-
+            case NotificationState.success:
+                return "#2BD84E";
+        
+            default:
+                return "#3361FF";
+        }
+    }
 </script>
 
 <nav>
@@ -162,6 +153,10 @@
 </nav>
     
 <slot></slot>
+
+<section id="toast">
+    <p style={ `background-color: ${ color() };` } class={ ($notification === undefined) ? "" : "show" }>{  ($notification === undefined) ? "" : $notification.message }</p>
+</section>
 
 
 
