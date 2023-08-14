@@ -413,14 +413,14 @@
             </div>
 
             <div class="prompt">
-                <p>How or why did you find interest in programming. If you have never done it before, and just want to try it out for exploration, you can explain that too</p>
+                <p>How or why did you find interest in programming. If you have never done it before, and just want to try it out for exploration, you can explain that too (ideally at least 100 words)</p>
                 <textarea  bind:value={ interest } name="" id="" placeholder="<p>It all started when I watched the Big Bang Theory ...</p>"></textarea>
             </div>
 
             <br>
 
             <div class="prompt">
-                <p>What would a successful year, both personally and socially, as a WCI member look like to you?</p>
+                <p>What would a successful year, both personally and socially, as a WCI member look like to you? (ideally at least 100 words)</p>
                 <textarea name=""  bind:value={ successfulYear } id="" placeholder="<p>I heard (Mr Neal | Ms Gereke) is the GOAT so I wou..</p>"></textarea>
             </div>
 
