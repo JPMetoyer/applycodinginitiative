@@ -285,7 +285,7 @@
         ; 
 
     const onFinishEditEmail = async () => {
-        if (email.endsWith("students.springisd.org") === false && email !== "") { emailError = "Use your correct school email"; return }
+        if (email.endsWith("@students.springisd.org") === false && email !== "") { emailError = "Use your correct school email"; return }
         emailError = "";
     }
 
@@ -310,7 +310,7 @@
 
         });
 
-        const action = await fetch(`https://codinginitiative.org/api`, {
+        const action = await fetch(`https://apply.codinginitiative.org/api/application`, {
             method: "POST",
             headers: { "Content-Type": 'application/json' },
             body: data
@@ -329,8 +329,8 @@
 <section id="contact">
 
     <div id="canvas">
-        <Deliverable active={ streamOption === "underclassman" } image={ "" } />
-        <Deliverable active={ streamOption === "upperclassman" } image={ "" } />
+        <Deliverable title="(Now) Underclassman Tours · Dec 2022" active={ streamOption === "underclassman" } image={ "/images/under.jpeg" } />
+        <Deliverable title="Upperclassmen on Field Trip Promoting Computing" active={ streamOption === "upperclassman" } image={ "/images/tours.jpeg" } />
 
         <span class="check horizontal">
             { #each Array(rows) as _ }
@@ -360,18 +360,18 @@
 
             <p>A few things to keep in mind: </p>
             <span class="list">
-                <p>Deadline to submit this application is <b>Aug 14, 2023</b>, since schedules cannot be changed after the first two weeks :(</p>
+                <p>Deadline to submit this application is <b>Friday, Aug 25, 2023</b>, since schedules cannot be changed after the first two weeks :(</p>
                 <p class="point">Club meetings will be during Study Hall (2nd for Underclassmen, and 6th for Upperclassmen); if you are a part of a club/class that does activities during your Study Hall, like the Yearbook Club, you will have to choose where you would prefer to spend your time</p>
-                <p class="point">The cohort resets each year; <b>so previous members also have to apply</b>. This is to give students who are no longer interested an opportunity to go back to their normal scheduling, and new students who are interested a chance to join</p>
-                <p>The club uses a blind selection process, meaning identifying information like name or ID number will be removed from review</p>
+                <p class="point">The cohort resets each year; <b>so previous members also have to apply</b>. This is to give current members who are no longer interested an opportunity to go back to their normal scheduling, and new students who are interested a chance to join</p>
+                <p>The club uses a blind selection process, meaning identifying information like name or ID number will be removed from review, and will only be used for contacting interested students</p>
             </span>
         </div>
 
         
-        <form bind:this={ formElement } action="https://codinginitiative.org/api" on:submit|preventDefault={ submitForm } method="post">
+        <form bind:this={ formElement } action="https://apply.codinginitiative.org/api/application" on:submit|preventDefault={ submitForm } method="post">
             <div class="description">
-                <h3> Are you a underclassman over upperclassman?</h3>
-                <p>Please keep in mind this will be used to change your class schedule and will take effect for the whole school year. <br><br> 9th and 10th will be at Mr. Neal, 11th and 12th at Ms. Gereke</p>
+                <h3>Are you an Underclassman or an Upperclassman</h3>
+                <p>Please keep in mind this will be used to change your 6th period class schedule and will take effect for the whole school year. <br><br> 9th and 10th will be at Mr. Neal, 11th and 12th at Ms. Gereke<br><b>Choose one below:</b></p>
             </div>
 
             <input type="radio" bind:group={ streamOption } id="under" name="stream" value="underclassman">
@@ -393,7 +393,7 @@
             <input bind:value={ idNumber } pattern="\d*" type="number" name="id" placeholder="ID Number">
 
             <div class={ (emailError === "") ? "email" : "email error" }>
-                <input on:blur={ onFinishEditEmail } bind:this={ emailElement } bind:value={ email } type="email" name="email" placeholder="youremail@springisd.students.org">
+                <input on:blur={ onFinishEditEmail } bind:this={ emailElement } bind:value={ email } type="email" name="email" placeholder="youremail@students.springisd.org">
                 <p>{ emailError }</p>
             </div>
 

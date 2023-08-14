@@ -3,6 +3,7 @@
 <script lang="ts">
     export let image : string;
     export let active: boolean;
+    export let title : string = "";
 </script>
 
 <style lang="scss">
@@ -20,6 +21,9 @@
 
         height: calc(100% - 2rem);
         max-height: 24vmax;
+
+        background-color: app.$color-background;
+        box-shadow: 0rem 0rem 1.5rem rgba(40, 42, 54, 0.08);
 
         @keyframes dev-in {
             0% {
@@ -121,7 +125,7 @@
             grid-template-columns: 2rem auto 2rem;
 
             background-color: hsl(218, 27%, 92%);
-            padding: 0rem 0.8rem;
+            padding: 0.1rem 0.8rem;
 
             > div {
                 display: flex;
@@ -152,7 +156,7 @@
 <div class={ `deliverable${ active ? " active" : "" }` }>
     <span class="navbar">
         <div><span></span><span></span><span></span></div>
-        <p>yourcompany.com</p>
+        <p>{ title }</p>
     </span>
 
     <img src={ image } alt="">
