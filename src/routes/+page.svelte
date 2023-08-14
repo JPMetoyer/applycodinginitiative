@@ -368,7 +368,7 @@
 
             <p>A few things to keep in mind: </p>
             <span class="list">
-                <p>Deadline to submit this application is <b>Friday, Aug 25, 2023</b>, since schedules cannot be changed after the first two weeks :(</p>
+                <p>Deadline to submit this application is <b>Friday, Aug 25, 2023</b>, because of the unique nature of the club, as we teach Web Development year around, we want to get an early start so that students can prepare for competition. </p>
                 <p class="point">Club meetings will be during Study Hall (2nd for Underclassmen, and 6th for Upperclassmen); if you are a part of a club/class that does activities during your Study Hall, like the Yearbook Club, you will have to choose where you would prefer to spend your time</p>
                 <p class="point">The cohort resets each year; <b>so previous members also have to apply</b>. This is to give current members who are no longer interested an opportunity to go back to their normal scheduling, and new students who are interested a chance to join</p>
                 <p>The club uses a blind selection process, meaning identifying information like name or ID number will be removed from review, and will only be used for contacting interested students</p>
@@ -409,7 +409,7 @@
 
             <div class="description">
                 <h3>General Questions</h3>
-                <p>Information to help us get to know you better - especially in relations to your interest in code. Answer in as many (or few) words as you would like. The more detail you provide, however, the better. Keep in mind that any names, emails, ID numbers or of the sort added to your answers will be edited to "[...]" by a club officer beforehand. If you have to use someone in your answer, use pronouns like: my, them, my friend, my father, my brother etc.</p>
+                <p>Information to help us get to know you better - especially in relations to your interest in code. Answer in as many (or few) words as you would like. The more detail you provide, however, the better. Keep in mind that any names, emails, ID numbers or of the sort added to your answers will be edited to "[...]" by a club officer beforehand. If you have to use someone in your answer, use pronouns like: my, them, my friend, my father, my brother etc. Keep in mind that just because you do not have any knoweldge in coding, that will not automatically cut you from our application! Almost every single person in the club since its origin did not have any experience in Information Technology besides the founders and some of the officers!</p>
             </div>
 
             <div class="prompt">
