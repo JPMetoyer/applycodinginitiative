@@ -269,9 +269,12 @@
     let formElement: HTMLFormElement;
     let emailElement: HTMLInputElement;
 
+    let sending : boolean = false;
+
     let emailError : string = "";
 
     $: submittable = 
+        (sending === false) &&
         (streamOption != undefined) &&
         (name != "") && (name != undefined) &&
         (idNumber != null) &&
@@ -296,6 +299,11 @@
             sendNotification({ message: "Your ID Number must be 8 digits long", type: NotificationState.error });
             return;
         }
+
+
+        sending = true;
+        sendNotification({ message: "Sending ...", type: NotificationState.info });
+
 
         const data = JSON.stringify({
             stream: streamOption,
@@ -431,7 +439,7 @@
             </div>
 
             <span>
-                <button type="submit" disabled={ submittable === false }>{ submittable ? "Submit" : "Fill in all information" }</button>
+                <button type="submit" disabled={ (submittable === false) || (sending === true) }>{ submittable ? "Submit" : "Fill in all information" }</button>
             </span>
         </form>
     </article>
