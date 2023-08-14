@@ -206,7 +206,7 @@
 
 
             textarea {
-                resize: vertical;
+                resize: none;
             }
 
             input,
@@ -251,6 +251,7 @@
 
 
     let viewportHeight : number = 0;
+    let viewportWidth : number = 0;
 
     $: rows = Math.floor(viewportHeight / 40);
 
@@ -261,13 +262,18 @@
     let idNumber: number;
     let email: string;
 
-    let interest: string;
-    let successfulYear: string;
-    let favoriteCartoon: string;
-    let pineapplePizza: String;
+    let interest: string = "";
+    let successfulYear: string = "";
+    let favoriteCartoon: string = "";
+    let pineapplePizza: string = "";
 
     let formElement: HTMLFormElement;
     let emailElement: HTMLInputElement;
+
+    let interestElement : HTMLTextAreaElement;
+    let cartoonElement : HTMLTextAreaElement;
+    let successElement : HTMLTextAreaElement;
+    let pizzaElement : HTMLTextAreaElement;
 
     let sending : boolean = false;
 
@@ -331,7 +337,7 @@
 
 </script>
 
-<svelte:window bind:innerHeight={ viewportHeight } />
+<svelte:window bind:innerHeight={ viewportHeight } bind:innerWidth={ viewportWidth }/>
 
 <main style="padding: 0px 6vw">
 <section id="contact">
@@ -414,28 +420,28 @@
 
             <div class="prompt">
                 <p>How or why did you find interest in programming. If you have never done it before, and just want to try it out for exploration, you can explain that too (ideally at least 100 words)</p>
-                <textarea  bind:value={ interest } name="" id="" placeholder="<p>It all started when I watched the Big Bang Theory ...</p>"></textarea>
+                <textarea rows="1" bind:this={ interestElement } on:input={ () => interestElement.style.height = `${ interestElement.scrollHeight }px` } bind:value={ interest } name="" id="" placeholder="<p>It all started when I watched the Big Bang Theory ...</p>"></textarea>
             </div>
 
             <br>
 
             <div class="prompt">
                 <p>What would a successful year, both personally and socially, as a WCI (Wunsche Coding Initiative) member look like to you? (ideally at least 100 words)</p>
-                <textarea name=""  bind:value={ successfulYear } id="" placeholder="<p>I heard (Mr Neal | Ms Gereke) is the GOAT so I wou..</p>"></textarea>
+                <textarea rows="1" bind:this={ successElement } on:input={ () => successElement.style.height = `${ successElement.scrollHeight }px` } name=""  bind:value={ successfulYear } id="" placeholder="<p>I heard (Mr Neal | Ms Gereke) is the GOAT so I wou..</p>"></textarea>
             </div>
 
             <br>
 
             <div class="prompt">
                 <p>Favorite Cartoon show? (You can have fun with this one; No ideal word limit)</p>
-                <textarea  bind:value={ favoriteCartoon } name="" id="" placeholder="<p>So there is this one YouTuber ...</p>"></textarea>
+                <textarea rows="1" bind:this={ cartoonElement } on:input={ () => cartoonElement.style.height = `${ cartoonElement.scrollHeight }px` } bind:value={ favoriteCartoon } name="" id="" placeholder="<p>So there is this one YouTuber ...</p>"></textarea>
             </div>
 
             <br>
 
             <div class="prompt">
                 <p>Pineapple on Pizza? (No ideal word limit with this either)</p>
-                <textarea  bind:value={ pineapplePizza } name="" id="" placeholder="<p>Only if its (Taylor's Version)</p>"></textarea>
+                <textarea rows="1" bind:this={ pizzaElement } on:input={ () => pizzaElement.style.height = `${ pizzaElement.scrollHeight }px` } bind:value={ pineapplePizza } name="" id="" placeholder="<p>Only if its (Taylor's Version)</p>"></textarea>
             </div>
 
             <span>
