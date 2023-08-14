@@ -310,7 +310,7 @@
 
         });
 
-        const action = await fetch(`https://apply.codinginitiative.org/api/application`, {
+        const action = await fetch(`/api/application`, {
             method: "POST",
             headers: { "Content-Type": 'application/json' },
             body: data
@@ -368,7 +368,7 @@
         </div>
 
         
-        <form bind:this={ formElement } action="https://apply.codinginitiative.org/api/application" on:submit|preventDefault={ submitForm } method="post">
+        <form bind:this={ formElement } action="/api/application" on:submit|preventDefault={ submitForm } method="post">
             <div class="description">
                 <h3>Are you an Underclassman or an Upperclassman</h3>
                 <p>Please keep in mind this will be used to change your 6th period class schedule and will take effect for the whole school year. <br><br> 9th and 10th will be at Mr. Neal, 11th and 12th at Ms. Gereke<br><b>Choose one below:</b></p>

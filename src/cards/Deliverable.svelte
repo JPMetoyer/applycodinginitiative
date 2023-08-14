@@ -146,7 +146,7 @@
                 };
             }
 
-            > p { width: 100%; font-size: 80%; text-align: center; }
+            > p { width: 100%; font-size: 80%; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         }
 
         > img { width: 100%; height: 100%; object-fit: cover; }

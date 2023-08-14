@@ -79,15 +79,45 @@
         background-color: transparent;
         pointer-events: none;
 
+        @keyframes showNotification {
+            0% {
+                bottom: -20%;
+            }
+            10% {
+                bottom: 0%;
+            }
+            100% {
+                bottom: 3rem;
+            }
+        }
+
+        @keyframes hideNotification {
+            0% {
+                bottom: 3rem;
+            }
+            50% {
+                bottom: 0%;
+            }
+            100% {
+                bottom: -20%;
+            }
+        }
+
         p {
             position: absolute;
             bottom: -20%;
             left: 50%;
             transform: translateX(-50%);
 
-            transition-property: bottom;
-            transition-duration: 700ms;
-            transition-timing-function: ease-in;
+            width: max-content;
+            max-width: 90vw;
+
+            text-align: center;
+
+            animation-name: hideNotification;
+            animation-duration: 1200ms;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
 
             color: app.$color-background;
             box-shadow: 0rem 0rem 1.5rem rgba(40, 42, 54, 0.08);
@@ -97,6 +127,11 @@
 
             &.show {
                 bottom: 3rem;
+
+                animation-name: showNotification;
+                animation-duration: 600ms;
+                animation-timing-function: linear;
+                animation-fill-mode: forwards;
             }
         }
     }
@@ -109,6 +144,8 @@
 
     import { page } from '$app/stores';
     import { NotificationState, notification, sendNotification } from "../lib/utilities";
+
+    let viewportWidth: number = 0;
     
 
     $: color = () => { 
@@ -134,10 +171,13 @@
     }
 </script>
 
+
+<svelte:window bind:innerWidth={ viewportWidth } />
+
 <nav>
     <a href="/" id="logo">
         <img src="/icons/wci.png" alt=""> 
-        <h1>The Coding Initiative</h1>         
+        <h1>{ (viewportWidth < 400) ? "THE WCI" : "The Coding Initiative" }</h1>         
     </a>
 
     
