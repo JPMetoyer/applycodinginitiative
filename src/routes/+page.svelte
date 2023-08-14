@@ -435,7 +435,7 @@
 
             <div class="prompt">
                 <p>Pineapple on Pizza? (No ideal word limit with this either)</p>
-                <textarea  bind:value={ pineapplePizza } name="" id="" placeholder="<p>Only (Taylor's Version)</p>"></textarea>
+                <textarea  bind:value={ pineapplePizza } name="" id="" placeholder="<p>Only if its (Taylor's Version)</p>"></textarea>
             </div>
 
             <span>
