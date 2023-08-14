@@ -420,21 +420,21 @@
             <br>
 
             <div class="prompt">
-                <p>What would a successful year, both personally and socially, as a WCI member look like to you? (ideally at least 100 words)</p>
+                <p>What would a successful year, both personally and socially, as a WCI (Wunsche Coding Initiative) member look like to you? (ideally at least 100 words)</p>
                 <textarea name=""  bind:value={ successfulYear } id="" placeholder="<p>I heard (Mr Neal | Ms Gereke) is the GOAT so I wou..</p>"></textarea>
             </div>
 
             <br>
 
             <div class="prompt">
-                <p>Favorite Cartoon show?</p>
+                <p>Favorite Cartoon show? (You can have fun with this one; No ideal word limit)</p>
                 <textarea  bind:value={ favoriteCartoon } name="" id="" placeholder="<p>So there is this one YouTuber ...</p>"></textarea>
             </div>
 
             <br>
 
             <div class="prompt">
-                <p>Pineapple on Pizza?</p>
+                <p>Pineapple on Pizza? (No ideal word limit with this either)</p>
                 <textarea  bind:value={ pineapplePizza } name="" id="" placeholder="<p>Only (Taylor's Version)</p>"></textarea>
             </div>
 
