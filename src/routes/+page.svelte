@@ -22,6 +22,7 @@
         height: calc(100svh - 5rem);
         padding: unset;
 
+
         display: grid;
         grid-template-columns: 1fr;
         grid-template-columns: auto;
@@ -101,6 +102,8 @@
                 margin-right: 2rem;
                 margin-left: 50vw;
             }
+
+            padding: 0px 6vw;
         }
 
         article > form {
@@ -146,6 +149,8 @@
                 label {
                     position: relative;
 
+
+
                     img {
                         position: absolute;
                         top: 0.8rem;
@@ -155,6 +160,8 @@
                         max-height: 100%;
                     }
                     p { height: 3rem; }
+
+                    > span { left: unset; right: 1rem; }
                 }
             }
 
@@ -214,6 +221,8 @@
             }
 
             label {
+                position: relative;
+
                 display: flex;
                 flex-direction: column;
                 align-items: flex-end;
@@ -221,7 +230,7 @@
                 border-radius: 0.8rem;
                 background-color: app.$color-background;
 
-                padding: 1.5rem 1rem 0.65rem 1rem;
+                padding: 2rem 1rem 0.65rem 1rem;
                 fill: transparent;
                 width: unset;
                 flex-grow: 1;
@@ -244,12 +253,35 @@
                     transition-timing-function: ease-in;
                 }
 
+                > span {
+                    position: absolute;
+                    top: 0.8rem;
+                    left: 1rem;
+
+                    width: 1.25rem;
+                    height: 1.25rem;
+                    stroke: app.$color-info;
+
+                    opacity: 0%;
+
+                    transition-property: opacity;
+                    transition-duration: 300ms; 
+                    transition-timing-function: ease-in;
+
+                }
+
+                
+
                 &.checked {
                     border: 1px dashed transparent;
                     box-shadow: 0rem 0rem 1.5rem rgba(40, 42, 54, 0.08);
 
                     img { filter: grayscale(0%); }
                     > p { color: app.$color-foreground; }
+
+                    > span {
+                        opacity: 100%;
+                    }
                 }
 
                 > p { 
@@ -428,7 +460,7 @@
 
 <svelte:window bind:innerHeight={ viewportHeight } bind:innerWidth={ viewportWidth }/>
 
-<main style="padding: 0px 6vw">
+<main>
 <section id="contact">
 
     <div id="canvas">
@@ -481,8 +513,25 @@
             <input type="radio" bind:group={ streamOption } id="upper" name="stream" value="upperclassman">
 
             <div class="options">
-                <label class={ (streamOption === "underclassman") ? "checked" : "" } for="under"><p>9th & 10th<br>Underclassman</p></label>
-                <label class={ (streamOption === "upperclassman") ? "checked" : "" } for="upper"><p>11th & 12th<br>Upperclassman</p></label>
+                <label class={ (streamOption === "underclassman") ? "checked" : "" } for="under">
+                    <p>9th & 10th<br>Underclassman</p>
+
+                    <span>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 12L10.2426 16.2427L18.7279 7.75739" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </label>
+
+                <label class={ (streamOption === "upperclassman") ? "checked" : "" } for="upper">
+                    <span>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 12L10.2426 16.2427L18.7279 7.75739" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+
+                    <p>11th & 12th<br>Upperclassman</p>
+                </label>
             </div>
 
             <br>
@@ -509,7 +558,7 @@
                 <br>
 
                 <span class="list">
-                    <p>Financial aid for competitions (during 2022, we were the only chapter that fully paid or at least subsidized its members' competition fees)</p>
+                    <p>Covering for competitions Fees (during 2022, we were the only chapter that fully paid or at least subsidized its members' competition fees)</p>
                     <p>Tailored coaching and practice sessions from other members who have competed before</p>
                     <p>Assisted guidance for projects, both personal and competitive, ranging from timing, content, design, and execution</p>
                 </span>
@@ -524,6 +573,12 @@
                     <label class={ `${ org.selected ? "checked" : "" }` } for={ org.id }>
                         <img src={ `/icons/${ org.image }` } alt="">
                         <p class="truncated">{ org.lead }<br>{ org.name }</p>
+
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 12L10.2426 16.2427L18.7279 7.75739" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
 
                         <input bind:checked={ org.selected } type="checkbox" id={ org.id }>
                     </label>
