@@ -1,5 +1,8 @@
 {
 	"/": [],
+	"/api": [
+		"src/routes/api/+server.ts"
+	],
 	"/api/application": [
 		"src/routes/api/application/+server.ts"
 	]

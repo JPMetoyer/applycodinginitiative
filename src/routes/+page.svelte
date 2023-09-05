@@ -5,6 +5,7 @@
 
     h1 { font-size: 160%; font-weight: app.$weight-black; }
     b { font-weight: app.$weight-bold; }
+    span.info { color: app.$color-brand }
 
     span.list {
         display: flex;
@@ -134,6 +135,68 @@
                 > p { font-style: italic; }
             }
 
+            div.organizations {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                gap: 1rem 1rem;
+
+                margin-top: 1rem;
+
+                label {
+                    position: relative;
+
+                    img {
+                        position: absolute;
+                        top: 0.8rem;
+                        left: 0.8rem;
+
+                        width: 3rem;
+                        max-height: 100%;
+                    }
+                    p { height: 3rem; }
+                }
+            }
+
+            div.learn {
+                position: relative;
+                margin-top: 1.5rem;
+
+                padding-top: 1rem;
+
+                p {
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                }
+
+                a {
+                    position: relative;
+                    margin-left: 2rem;
+                    color: app.$color-brand;
+                    height: 1.5rem;
+
+                    width: max-content;
+
+                    > div {
+                        position: absolute;
+                        top: 50%;
+                        right: -2rem;
+                        width: 1.5rem;
+                        height: 1.5rem;
+
+                        transform: translateY(-35%) rotateZ(45deg);
+                    }
+                }
+
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                gap: 0.3rem;
+
+                
+            }
+
             input[type=radio] { display: none; }
 
             div.email.error {
@@ -163,16 +226,29 @@
                 width: unset;
                 flex-grow: 1;
 
+                cursor: pointer;
+
                 border: 1px dashed app.$color-shade;
 
                 transition-property: box-shadow;
                 transition-duration: 300ms;
                 transition-timing-function: ease-in;
 
+                input { display: none };
+
+                img {
+                    filter: grayscale(100%);
+
+                    transition-property: filter;
+                    transition-duration: 300ms;
+                    transition-timing-function: ease-in;
+                }
+
                 &.checked {
                     border: 1px dashed transparent;
                     box-shadow: 0rem 0rem 1.5rem rgba(40, 42, 54, 0.08);
 
+                    img { filter: grayscale(0%); }
                     > p { color: app.$color-foreground; }
                 }
 
@@ -256,6 +332,14 @@
     $: rows = Math.floor(viewportHeight / 40);
 
 
+    $: competitionOrganizations = [
+        { selected: false, lead: "Business", name: "Professionals of America", image: "bpa.png", id: "bpa", link: "https://bpa.org/" },
+        { selected: false, lead: "", name: "SkillsUSA", image: "skillsusa.png", id: "skills", link: "https://www.skillsusa.org/" },
+        { selected: false, lead: "Future Business", name: "Leaders of America", image: "fbla.png", id: "fbla", link: "https://www.fbla-pbl.org/" },
+        { selected: false, lead: "Technology", name: "Student Association", image: "tsa.png", id: "tsa", link: "https://tsaweb.org/" }
+    ]
+
+
     // Answers
     let streamOption : string; 
     let name: string;
@@ -320,7 +404,12 @@
             interest: interest,
             successfulYearDescription: successfulYear,
             cartoon: favoriteCartoon,
-            pizza: pineapplePizza
+            pizza: pineapplePizza, 
+
+            bpa: competitionOrganizations[0].selected,
+            skills: competitionOrganizations[1].selected,
+            fbla: competitionOrganizations[2].selected,
+            tsa: competitionOrganizations[3].selected
 
         });
 
@@ -374,7 +463,7 @@
 
             <p>A few things to keep in mind: </p>
             <span class="list">
-                <p>Deadline to submit this application is <b>Friday, Aug 25, 2023</b>, because of the unique nature of the club, as we teach Web Development year around, we want to get an early start so that students can prepare for competition. </p>
+                <p>Deadline to submit this application is <b>Friday &middot; Sept 15, 2023 @ 11:59 PM</b>. This is due to the unique nature of the club, as we teach Web Development year around, we want to get an early start so that students can prepare for competition. </p>
                 <p class="point">Club meetings will be during Study Hall (2nd for Underclassmen, and 6th for Upperclassmen); if you are a part of a club/class that does activities during your Study Hall, like the Yearbook Club, you will have to choose where you would prefer to spend your time</p>
                 <p class="point">The cohort resets each year; <b>so previous members also have to apply</b>. This is to give current members who are no longer interested an opportunity to go back to their normal scheduling, and new students who are interested a chance to join</p>
                 <p>The club uses a blind selection process, meaning identifying information like name or ID number will be removed from review, and will only be used for contacting interested students</p>
@@ -385,7 +474,7 @@
         <form bind:this={ formElement } action="/api/application" on:submit|preventDefault={ submitForm } method="post">
             <div class="description">
                 <h3>Are you an Underclassman or an Upperclassman</h3>
-                <p>Please keep in mind this will be used to change your 6th period class schedule and will take effect for the whole school year. <br><br> 9th and 10th will be at Mr. Neal, 11th and 12th at Ms. Gereke<br><b>Choose one below:</b></p>
+                <p>Please keep in mind this will be used to change your Study Hall class and will take effect for the whole school year. <br><br> 9th and 10th will be at Mr. Neal, 11th and 12th at Ms. Gereke<br><b>Choose one below:</b></p>
             </div>
 
             <input type="radio" bind:group={ streamOption } id="under" name="stream" value="underclassman">
@@ -413,9 +502,56 @@
 
             <br>
 
+            <div class="competitions">
+                <h3>Competitions</h3>
+                <p>Are you interested in showcasing your knowledge competitively and taking it as far as it can go? This year, we plan to have multiple options and routes for members to apply their skill competitively. <b>You do not have to be a Wunsche Coding Initiative member to compete in these organizations</b>; however, WCI members do get access to exclusive perks including:</p>
+
+                <br>
+
+                <span class="list">
+                    <p>Financial aid for competitions (during 2022, we were the only chapter that fully paid or at least subsidized its members' competition fees)</p>
+                    <p>Tailored coaching and practice sessions from other members who have competed before</p>
+                    <p>Assisted guidance for projects, both personal and competitive, ranging from timing, content, design, and execution</p>
+                </span>
+
+                <br>
+
+                <p>If you think you might be interested in competing, regardless of whether you end up as a Wunsche Coding Initiative member, choose the organizations that you are interested in (select all that apply):</p>
+            </div>
+
+            <div class="organizations">
+                { #each competitionOrganizations as org }
+                    <label class={ `${ org.selected ? "checked" : "" }` } for={ org.id }>
+                        <img src={ `/icons/${ org.image }` } alt="">
+                        <p class="truncated">{ org.lead }<br>{ org.name }</p>
+
+                        <input bind:checked={ org.selected } type="checkbox" id={ org.id }>
+                    </label>
+                {/each }
+            </div>
+
+            
+
+            <div class="learn">
+                <p>You can learn more about each on their respective pages:</p>
+                <br>
+        
+                { #each competitionOrganizations as org }
+                    <a target="_blank" href={ org.link }>{ org.lead } { org.name } <div>&uarr;</div></a>
+                {/each }
+            </div>
+
+            <br>
+
             <div class="description">
                 <h3>General Questions</h3>
-                <p>Information to help us get to know you better - especially in relations to your interest in code. Answer in as many (or few) words as you would like. The more detail you provide, however, the better. Keep in mind that any names, emails, ID numbers or of the sort added to your answers will be edited to "[...]" by a club officer beforehand. If you have to use someone in your answer, use pronouns like: my, them, my friend, my father, my brother etc. Keep in mind that just because you do not have any knoweldge in coding, that will not automatically cut you from our application! Almost every single person in the club since its origin did not have any experience in Information Technology besides the founders and some of the officers!</p>
+                <p>Information to help us get to know you better - especially in relations to your interest in code. Answer in as many (or few) words as you would like. The more detail you provide, however, the better. Keep in mind that any names, emails, ID numbers or of the sort added to your answers will be edited to "[...]" by a club officer beforehand. If you have to use someone in your answer, use pronouns like: my, them, my friend, my father, my brother etc. Just because you do not have any knoweldge in coding, that will not automatically cut you from our application! Almost every single person in the club since its origin did not have any experience in Information Technology besides the founders and some of the officers!
+                <br>
+                <br>
+                
+                <span class="info">Since your progress won't be saved before you submit, we recommend typing it elsewhere then pasting here when you are done</span>
+            
+            </p>
             </div>
 
             <div class="prompt">
@@ -441,7 +577,7 @@
 
             <div class="prompt">
                 <p>Pineapple on Pizza? (No ideal word limit with this either)</p>
-                <textarea rows="1" bind:this={ pizzaElement } on:input={ () => pizzaElement.style.height = `${ pizzaElement.scrollHeight }px` } bind:value={ pineapplePizza } name="" id="" placeholder="<p>Only if its (Taylor's Version)</p>"></textarea>
+                <textarea rows="1" bind:this={ pizzaElement } on:input={ () => pizzaElement.style.height = `${ pizzaElement.scrollHeight }px` } bind:value={ pineapplePizza } name="" id="" placeholder="<p>Only if the pineapple is (Taylor's Version)</p>"></textarea>
             </div>
 
             <span>

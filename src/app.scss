@@ -127,3 +127,8 @@ svg {
         transform: translateX(-50%) translateY(-50%);
     }
 }
+
+.truncated {
+    overflow: hidden;
+    white-space: nowrap;
+}
