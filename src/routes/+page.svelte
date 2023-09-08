@@ -496,7 +496,7 @@
             <p>A few things to keep in mind: </p>
             <span class="list">
                 <p>Deadline to submit this application is <b>Friday &middot; Sept 15, 2023 @ 11:59 PM</b>. This is due to the unique nature of the club, as we teach Web Development year around, we want to get an early start so that students can prepare for competition. </p>
-                <p class="point">Club meetings will be during Study Hall (2nd for Underclassmen, and 6th for Upperclassmen); if you are a part of a club/class that does activities during your Study Hall, like the Yearbook Club, you will have to choose where you would prefer to spend your time</p>
+                <p class="point">Club meetings will be during Study Hall (2nd for Underclassmen, and 6th for Upperclassmen); if you are a part of a club/class that does recurring activities during your Study Hall, like the Yearbook Club, you will have to choose where you would prefer to spend your time</p>
                 <p class="point">The cohort resets each year; <b>so previous members also have to apply</b>. This is to give current members who are no longer interested an opportunity to go back to their normal scheduling, and new students who are interested a chance to join</p>
                 <p>The club uses a blind selection process, meaning identifying information like name or ID number will be removed from review, and will only be used for contacting interested students</p>
             </span>

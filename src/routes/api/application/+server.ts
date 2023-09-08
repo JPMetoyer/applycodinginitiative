@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { doc, getFirestore, setDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, getFirestore, setDoc } from "firebase/firestore";
 import { json, type RequestHandler } from '@sveltejs/kit';
 import { API_KEY, APP_ID, AUTH_DOMAIN, MEASUREMENT_ID, MESSAGING_SENDER_ID } from '$env/static/private';
 
@@ -45,6 +45,21 @@ export const POST: RequestHandler = async ({ request }) => {
     }    
 };
 
+export const GET: RequestHandler = async ({ request }) => {
+    try {
+        
+        const application = initializeApp(applicationConfiguration);
+        const database = getFirestore(application);
 
+        const apps =  collection(database, `applications`);
+        const snapshot = await getDocs(apps);
+
+        const responses = snapshot.docs.map((document) => document.data());
+
+        return json({ status: 300, applications: responses });
+    } catch {
+        return json({ status: 405, message: "Couldn't get data" })
+    }
+}
 
 
