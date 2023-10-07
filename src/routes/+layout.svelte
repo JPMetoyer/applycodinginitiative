@@ -197,7 +197,7 @@
         <a class={ $page.route.id === "/about" ? "current" : "" } href="/about" id="underline">About</a>
     </button>
 
-    <a href="mailto:contact@33beats.com" class="button">Get Quote</a>
+    <a href="/quote" class="button">Get Quote</a>
 </nav>
 
 <main>

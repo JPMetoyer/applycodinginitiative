@@ -1,8 +1,3 @@
-<script>
-    import Project from "../../cards/Project.svelte";
-    import Icon from "../../components/Icon.svelte";
-
-</script>
 
 
 <style lang="scss">
@@ -124,20 +119,30 @@
 </style>
 
 
+<script>
+    import Project from "../../cards/Project.svelte";
+    import Icon from "../../components/Icon.svelte";
+    import CaseStudy from "../../models/casestudy";
+
+
+    import projects from "../../data/portfolio.json";
+
+</script>
+
+
 <article id="showcase">
     <div id="descriptor">
-        <h1 class="tagline">Boost your Business</h1>
-        <p class="instructions">Tap to select</p>
+        <h1 class="tagline">Ready to take your business/event to the next level?</h1>
+        <p class="instructions">How may we help</p>
     </div>
 
 
     <div>
         <div class="carousel">
         <div class="viewport">
-            <Project></Project>
-            <Project></Project>
-            <Project></Project>
-            <Project></Project>
+            { #each projects as info }
+            <Project data={ new CaseStudy(info) } />
+            {/each }
         </div>
         </div>
 

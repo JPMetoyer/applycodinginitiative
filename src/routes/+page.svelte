@@ -18,7 +18,6 @@
         align-items: center;
         gap: 1rem;
 
-        marginbot
 
         h1 {
             font-size: 200%;
@@ -26,6 +25,8 @@
             padding-left: 2rem;
             transform: translateY(00%);
         }
+
+        img { height: 8rem; transform: translateX(20vw); }
 
         > span:nth-child(1) {
             margin-right: auto;
@@ -371,7 +372,7 @@
     <article class="meet">
         <span>
             <h1>Meet</h1>
-            <img src="/icons/logo.png" alt="">
+            <img src="/icons/official.png" alt="">
         </span>
     
         <span>

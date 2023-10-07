@@ -7,10 +7,10 @@
 
 
         display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-columns: 1fr 2fr 0.5fr;
         grid-template-rows: 1fr;
         gap: 1rem 1rem; 
-        height: calc(100vh - 6rem);
+        height: 100svh;
 
 
         @media screen and (max-width: 960px) {
@@ -21,11 +21,11 @@
         > div:nth-child(1) {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.5rem;
 
             padding: 0px 4vw;
 
-            h1 { font-size: 124%; }
+            h1 { font-size: 150%; }
         }
 
         > div:nth-child(2) {
@@ -193,8 +193,8 @@
 
 <section id="catalogue">
     <div class="info">
-        <h1>Lorem ipsum dolor sit amet</h1>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates aspernatur animi commodi omnis? Eos, esse sequi ducimus dolorum laboriosam inventore in pariatur quibusdam autem eligendi</p>
+        <h1>(33)Beats that Speak for Themselves</h1>
+        <p>Savor the sounds in our auditory showcase, where each project is a unique melody of our DJ solutions prowess. Immerse yourself in a world of sonic creativity</p>
     </div>
 
     <div class="grid">

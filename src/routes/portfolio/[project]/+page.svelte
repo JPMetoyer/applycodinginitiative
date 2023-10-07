@@ -16,7 +16,7 @@
     @use "../../../variables" as app;
 
     article {
-        padding: 1rem 8vw 4rem 8vw;
+        padding: 1rem 5vw 4rem 5vw;
 
         section {
 
@@ -97,6 +97,8 @@
 
         section.gallery {
 
+            transform: translateY(-1rem);
+
             > div.photos {
                 display: flex; 
                 flex-direction: column;;
@@ -123,6 +125,14 @@
                     align-items: center;
                     gap: 0.5rem;;
                 }
+            }
+
+            .call-to-action {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                margin-top: 2rem;
             }
 
         }
@@ -273,6 +283,10 @@
     <section class="gallery">
         <div class="photos">
             <img src="/images/festival.jpg" alt="">
+        </div>
+
+        <div class="call-to-action">
+            <a class="button secondary" href="">Join in the Mix</a>
         </div>
     </section>
 
