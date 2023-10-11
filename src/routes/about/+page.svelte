@@ -2,6 +2,10 @@
 
 <style lang="scss">
     @use "../../variables" as app;
+
+    h1 {
+        font-size: 150%;
+    }
 </style>
 
 <script lang="ts">
