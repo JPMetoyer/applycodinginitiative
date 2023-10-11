@@ -56,7 +56,46 @@
             height: 36vh;
             transform: translateX(-50%);
 
-            border: 1px solid blue; 
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            > img {
+                margin-top: auto;
+                width: 100%;
+                height: 90%;
+                object-fit: cover;
+            }
+
+            > p {
+                display: none;
+                
+                position: absolute;
+                top: 0%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-10%);
+                font-weight: app.$weight-black;
+                font-size: 200%;
+
+                color: app.$color-shade;
+
+                width: 100%;
+                text-align: center;
+
+                &:first-child {
+                    z-index: -1;
+                }
+
+                &:nth-child(2){
+                    display: none;
+
+                        z-index: 2;
+                    color: transparent;
+                    -webkit-text-stroke-width: 1px;
+                    -webkit-text-stroke-color: orange;
+                }
+            }
 
         }
 
@@ -161,6 +200,8 @@
 
     $: services = [
         {
+            single: "A.V. Production",
+            image: "barman.jpg",
             lead: "A.V.",
             title: "Production",
             description: "Stay ahead with cutting-edge technology; we offer seamless integration of the latest audio tech, lighting systems, and interactive features - ensuring futuristic audio-visual delight.",
@@ -171,6 +212,8 @@
             ]
         },
         {
+            single: "Events",
+            image: "cocktail.jpg",
             lead: "Curated",
             title: "Events",
             description: "From intimate gatherings to massive festivals, we craft unforgettable DJ experiences. Our team handles everything, from set design to audience engagement, ensuring your event is a sonic spectacle.",
@@ -181,6 +224,8 @@
             ]
         },
         {
+            single: "Branding",
+            image: "festival.jpg",
             lead: "Digital",
             title: "Branding",
             description: "Ignite your online presence with our digital branding service. We design eye-catching visuals, produce engaging content, and strategize social media campaigns to amplify your DJ brand across digital platforms.",
@@ -191,6 +236,8 @@
             ]
         },
         {
+            single: "Marketing",
+            image: "wei.jpg",
             lead: "Promotional",
             title: "Marketing",
             description: "Amplify your beats with our Promotional Marketing service – tailored strategies to elevate your company's brand, engage fans, and set the dancefloor on fire.",
@@ -211,7 +258,9 @@
     </div>
 
     <div id="graphic">  
-
+        <p>{ services[activeIndex].single }</p>
+        <p>{ services[activeIndex].single }</p>
+        <img src={ `/images/${ services[activeIndex].image }` } alt="">
     </div>
 
 
@@ -239,7 +288,7 @@
 
 
     <div id="cta">
-        <a href="/" class="button tertiary">Get Personalized Quote</a>
+        <a href="/quote" class="button tertiary">Get Personalized Quote</a>
     </div>
 </article>
 
