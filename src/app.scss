@@ -45,7 +45,7 @@ main > section {
     height: calc(100svh - 22vh);
 }
 
-h1 {
+h1, h1 > * {
     color: app.$color-foreground;
     font-size: 2rem;
     font-weight: app.$weight-bold;
@@ -53,21 +53,21 @@ h1 {
 
 }
 
-h2 {
+h2, h2 > * {
     font-weight: app.$weight-bold;
     color: app.$color-foreground;
 
     font-size: 1.5rem;
 }
 
-h3 {
+h3, h3 > * {
     font-weight: app.$weight-bold;
     font-size: 1.2rem;
     color: app.$color-foreground;
 
 }
 
-p, input {
+p, p > *, input, input > * {
     font-size: 1rem;
     font-weight: app.$weight-regular;
     color: app.$color-foreground;
@@ -123,6 +123,15 @@ svg {
         top: 50%;
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
+    }
+}
+
+.scrollbar-hidden {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
     }
 }
 

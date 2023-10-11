@@ -1,172 +1,246 @@
 
 
+
+
 <style lang="scss">
 
     @use "../../variables" as app;
 
+    article#services {
+        width: 100%;
+        padding-top: 60vh;
 
-    #showcase {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 0.4fr 1.3fr 0.6fr;
-        gap: 1rem 1rem;
-        height: calc(100vh - 10rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
 
-        > #descriptor {
+        position: relative;
+        padding-bottom: 4rem;
+
+
+        overflow: hidden;
+
+        div#header {
+            position: absolute;
+            top: 0.5rem;
+            left: 0px;
+            right: 0px;
+
+            display: flex; 
+            flex-direction: column;
+            gap: 2rem;
+
+            padding: 0px 5vw;
+
+            > h1 { position: relative; font-size: 164%; }
+            > h1 > * { font-size: 100%; }
+            > h1::after { 
+                content: "";
+                position: absolute;
+                bottom: -1rem;
+                left: 0px;
+                
+                ;
+                height: 1px;
+                width: 42%;
+                background-color: app.$color-brand;
+            }
+        }
+
+        div#graphic {
+            position: absolute;
+            top: 9rem;
+            left: 50%;
+            right: 0px;
+            width: 90vw;
+            height: 36vh;
+            transform: translateX(-50%);
+
+            border: 1px solid blue; 
+
+        }
+
+        div.message {
+            padding: 0px 5vw;
+
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            align-items: center;
             gap: 0.5rem;
+
+            margin-bottom: 1rem;
+
+            ul {
+                margin-left: 2rem; 
+                color: app.$color-foreground;
+            };
         }
 
-        > div:nth-child(2) {
+        div.selection {
             position: relative;
+            overflow: scroll visible;
+            padding: 0px 5vw;
 
-            div.carousel {
-                position: relative;
-                overflow: scroll hidden;
-                top: 0px;
-                left: 0px;
-                bottom: 0px;
-                right: 0px;
 
-                width: 100%;
+            // mobile
+            height: 7rem;
+            margin-bottom: 1rem;
+
+
+            > div.content {
+                position: absolute;
+
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+
                 height: 100%;
+                padding-right: 5vw;
+            }
 
-                &::-webkit-scrollbar { display: none; }
-                -ms-overflow-style: none;  /* IE and Edge */
-                scrollbar-width: none;
+            button {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                justify-content: flex-end;
+
+                padding: 1rem 1rem 0.8rem 4rem;
+                border-radius: 0.8rem;
+                border: 1px dashed app.$color-gray;
+
+                height: max-content;
+                width: 10rem;
 
 
-                > div.viewport {
-                    position: absolute;
-                    top: 0px;
-                    left: 0px;
-                    padding: 0px 1.5rem;
-                    bottom: 3rem;
+                background-color: transparent;
 
-                    display: flex;
-                    align-items: center;
+                transition-property: box-shadow;
+                transition-duration: 300ms;
+                transition-timing-function: ease-in;
 
-                    > :global(a) { width: calc(92vw - 2rem); margin: 0px 0.5rem; }
-
+                &.show {
+                    border: 1px dashed transparent;
+                    box-shadow: 0rem 0rem 1.5rem rgba(40, 42, 54, 0.08);
                 }
 
+                p { transform: translateY(0.1rem); }
+                h4 { font-weight: app.$weight-bold; }
+
+                > * {
+                    color: app.$color-gray;
+                }
             }
-
-            div.actions {
-                position: absolute;
-                bottom: 0px; 
-                left: 0px;
-                right: 0px;
-                padding: 0.5rem 0px;
-
-                display: flex;
-                justify-content: center;
-                gap: 1rem;
-            }
-
         }
 
-        > div:nth-child(3) {
-            position: relative;
-            margin: 0px 8vw; 
 
-            div.pagination {
-                position: absolute;
-                bottom: 0px;
-                left: 0px;
+        div#cta {
 
-                display: flex;
-                align-items: center;
-                justify-content: center;
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            width: 100%;
 
-                height: 2rem;
-                margin: 1vh 0px; 
+            padding: 1rem 0px;
 
-                > span {
-                    width: 0.5rem;
-                    height: 0.5rem;
-                    margin: 0px 0.2rem;
-                    
-                    border: solid;
-                    border-width: 1px;
-                    border-radius: 100%;
-                    border-color: app.$color-foreground;
-                }
-                
-            }
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-            div.arrows {
-                position: absolute;
-                bottom: 0px;
-                right: 0px;
-                margin: 1vh 0px; 
+            background: linear-gradient(180deg, transparent, app.$color-background);
 
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                gap: 0.5rem;
-
-
-
-                fill: transparent;
-            }
+            > a { background-color: app.$color-background; }
         }
     }
 </style>
 
+<script lang="ts">
 
-<script>
-    import Project from "../../cards/Project.svelte";
-    import Icon from "../../components/Icon.svelte";
-    import CaseStudy from "../../models/casestudy";
+    let activeIndex: number = 0;
 
-
-    import projects from "../../data/portfolio.json";
-
+    $: services = [
+        {
+            lead: "A.V.",
+            title: "Production",
+            description: "Stay ahead with cutting-edge technology; we offer seamless integration of the latest audio tech, lighting systems, and interactive features - ensuring futuristic audio-visual delight.",
+            deliverables: [
+                "Cutting-Edge Audio Technology",
+                "Dynamic Lighting Systems",
+                "Interactive Features Implementation",
+            ]
+        },
+        {
+            lead: "Curated",
+            title: "Events",
+            description: "From intimate gatherings to massive festivals, we craft unforgettable DJ experiences. Our team handles everything, from set design to audience engagement, ensuring your event is a sonic spectacle.",
+            deliverables: [
+                "Custom Set Design",
+                "Audience Engagement Strategies",
+                "Logistical Event Handling",
+            ]
+        },
+        {
+            lead: "Digital",
+            title: "Branding",
+            description: "Ignite your online presence with our digital branding service. We design eye-catching visuals, produce engaging content, and strategize social media campaigns to amplify your DJ brand across digital platforms.",
+            deliverables: [
+                "Eye-Catching Visual Design",
+                "Engaging Content Production:",
+                "Strategic Social Media Campaigns",
+            ]
+        },
+        {
+            lead: "Promotional",
+            title: "Marketing",
+            description: "Amplify your beats with our Promotional Marketing service – tailored strategies to elevate your company's brand, engage fans, and set the dancefloor on fire.",
+            deliverables: [
+                "Tailored Brand Elevation Strategies",
+                "Fan Engagement Initiatives",
+                "Dancefloor Ignition Campaigns",
+            ]
+        }
+    ]
 </script>
 
+<article id="services">
 
-<article id="showcase">
-    <div id="descriptor">
-        <h1 class="tagline">Ready to take your business/event to the next level?</h1>
-        <p class="instructions">How may we help</p>
+    <div id="header">
+        <h1>Ready to take your <span>event</span> to the next level?</h1>
+        <p>Here is how we can help:</p>
+    </div>
+
+    <div id="graphic">  
+
     </div>
 
 
-    <div>
-        <div class="carousel">
-        <div class="viewport">
-            { #each projects as info }
-            <Project data={ new CaseStudy(info) } />
+    <div class="message">
+        <p>{ services[activeIndex].description }</p>
+        <ul>
+            { #each services[activeIndex].deliverables as deliverable }
+                <li>{ deliverable }</li>
             {/each }
-        </div>
-        </div>
-
-        <div class="actions">
-            <a href="/portfolio" class="secondary button">View Case Studies</a>
-        </div>
+        </ul>
     </div>
 
-    <div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, ducimus. Modi repellat error, fugiat doloremque reprehenderit obcaecati adipisci!</p>
+    <div class="selection scrollbar-hidden">
+    <div class="content">
+        { #each services as service, index}
+        <button class={ (activeIndex === index) ? "show" : "" } on:click={ () => { activeIndex = index }} >
+            <p>{ service.lead }</p>
+            <h4>{ service.title }</h4>
+        </button>
+        {/each }
+    </div>
+    </div>
 
-        <div class="pagination">
-            <span></span><span></span><span></span><span></span><span></span>
-        </div>
 
-        <div class="arrows">
-            <Icon frame={[1.8, 1.8]}>
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.57 5.93005L3.5 12.0001L9.57 18.0701" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20.5 12H3.66998" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            </Icon>
 
-            <Icon frame={[1.8, 1.8]}>
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.43 5.93005L20.5 12.0001L14.43 18.0701" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.5 12H20.33" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            </Icon>
-        </div>
+
+    <div id="cta">
+        <a href="/" class="button tertiary">Get Personalized Quote</a>
     </div>
 </article>
+
+
 
