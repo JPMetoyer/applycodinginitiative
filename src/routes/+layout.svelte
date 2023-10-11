@@ -41,9 +41,6 @@
             justify-content: center;
             gap: 1rem;
             transform: translateX(-50%);
-
-            
-
             
         }
 
@@ -65,7 +62,10 @@
 
         @media screen and (max-width: 640px) {
             &.show {
-            opacity: 100%;
+                opacity: 100%;
+
+                z-index: 5;
+                > * { z-index: 6; }
             }
         }
 
@@ -86,7 +86,9 @@
         width: 100vw;
         height: 100vh;
 
-        z-index: 5;
+        z-index: -1;
+        > * { z-index: -1; }
+
 
         -webkit-backdrop-filter: blur(1rem);
         backdrop-filter: blur(1rem);
@@ -95,7 +97,6 @@
         padding-top: 4rem;
 
 
-        > * { z-index: 6 }
 
         div.links {
 

@@ -89,6 +89,7 @@
 
             > div.content {
                 position: absolute;
+                width: max-content;
 
                 display: flex;
                 align-items: center;
@@ -147,7 +148,7 @@
             align-items: center;
             justify-content: center;
 
-            background: linear-gradient(180deg, transparent, app.$color-background);
+            background: linear-gradient(180deg, transparent, app.$color-background 50%);
 
             > a { background-color: app.$color-background; }
         }

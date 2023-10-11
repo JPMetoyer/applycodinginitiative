@@ -100,8 +100,7 @@
     }
 
     #catalogue {
-        padding: 2rem 4vw;
-        margin-bottom: 8rem;
+        padding: 0rem 5vw;
 
         display: flex;
         flex-direction: column;

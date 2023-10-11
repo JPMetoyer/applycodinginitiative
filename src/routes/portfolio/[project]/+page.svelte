@@ -16,11 +16,10 @@
     @use "../../../variables" as app;
 
     article {
-        padding: 1rem 5vw 4rem 5vw;
+        padding: 1rem 5vw 0rem 5vw;
 
         section {
 
-            margin-bottom: 4rem;
 
             > h3 {
                 position: relative;
@@ -39,9 +38,13 @@
                 }
             }
 
+            margin-top: 4rem;
+
+
         }
 
         section#intro {
+            margin-top: 0px;
             margin-bottom: 2rem;
 
             > h5 { font-weight: app.$weight-black; font-size: 100%; margin: 0.5rem 0px; }
@@ -133,6 +136,7 @@
                 justify-content: center;
 
                 margin-top: 2rem;
+                margin-bottom: 4rem;
             }
 
         }
