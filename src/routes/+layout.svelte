@@ -16,10 +16,19 @@
         align-items: center; 
         justify-content: space-between;
 
-        padding: 0.3rem 1rem; 
         background-color: app.$color-background;
+        padding: 0.3rem 5vw; 
 
-        border-bottom: 0.5px solid app.$color-brand;
+        &::after {
+            position: absolute;
+
+            content: "";
+            bottom: 0px;
+            left: 3vw;
+            right: 3vw;
+            height: 1px;
+            border-bottom: 0.5px dashed app.$color-brand;
+        }
 
         #logo {
             // width: 2.8rem;
@@ -56,6 +65,75 @@
         };
 
         
+    }
+
+    section#toast {
+        z-index: 20;
+
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        height: 100dvh;
+
+        background-color: transparent;
+        pointer-events: none;
+
+        @keyframes showNotification {
+            0% {
+                bottom: -20%;
+            }
+            10% {
+                bottom: 0%;
+            }
+            100% {
+                bottom: 3rem;
+            }
+        }
+
+        @keyframes hideNotification {
+            0% {
+                bottom: 3rem;
+            }
+            50% {
+                bottom: 0%;
+            }
+            100% {
+                bottom: -20%;
+            }
+        }
+
+        p {
+            position: absolute;
+            bottom: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            width: max-content;
+            max-width: 90vw;
+
+            text-align: center;
+
+            animation-name: hideNotification;
+            animation-duration: 1200ms;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+
+            color: app.$color-background;
+            box-shadow: 0rem 0rem 1.5rem rgba(40, 42, 54, 0.08);
+
+            padding: 0.25rem 2rem;
+            border-radius: 2rem;
+
+            &.show {
+                bottom: 3rem;
+
+                animation-name: showNotification;
+                animation-duration: 600ms;
+                animation-timing-function: linear;
+                animation-fill-mode: forwards;
+            }
+        }
     }
 
     section#popup-nav {
@@ -142,6 +220,30 @@
     import "../app.scss";
     import Icon from "../components/Icon.svelte";
 
+    import { page } from '$app/stores';
+    import { NotificationState, notification, sendNotification } from "../lib/utilities";
+
+    $: color = () => { 
+        if ($notification === undefined) { return "transparent"; }
+
+        switch ($notification.type) {
+            case NotificationState.info:
+                return "#3361FF";
+
+            case NotificationState.error:
+                return "#FF5E6E";
+
+            case NotificationState.warning:
+                return "#FF8800";
+
+            case NotificationState.success:
+                return "#2BD84E";
+
+            default:
+                return "#3361FF";
+        }
+    }
+
     let popup: HTMLElement;
     let showNavbar: boolean = false;
     const toggleNavbar = () => { showNavbar = !showNavbar };
@@ -196,6 +298,10 @@
         </div>
     </div>
 
+</section>
+
+<section id="toast">
+    <p style={ `background-color: ${ color() };` } class={ ($notification === undefined) ? "" : "show" }>{  ($notification === undefined) ? "" : $notification.message }</p>
 </section>
 
 

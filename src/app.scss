@@ -75,6 +75,15 @@ p, p > *, input, input > * {
 
 }
 
+button, a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a {
+    color: app.$color-foreground;
+}
+
 
 button, a.button {
     padding: 0.3rem 1rem; 
@@ -96,14 +105,12 @@ button.tertiary, a.button.tertiary {
     color: app.$color-brand;
 }
 
-button, a {
-    cursor: pointer;
-    text-decoration: none;
+
+button:disabled {
+    background-color: app.$color-shade;
+    cursor: default;
 }
 
-a {
-    color: app.$color-foreground;
-}
 
 * > img {
     max-width: 100%; 
