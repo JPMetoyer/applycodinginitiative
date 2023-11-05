@@ -3,7 +3,7 @@
 
 <style lang="scss">
 
-    @use "../variables" as app;
+    @use "../../variables" as app;
 
     a.project {
         width: 100%;
@@ -38,9 +38,7 @@
 </style>
 
 <script lang="ts">
-    import type CaseStudy from "../models/casestudy";
-
-
+    import type CaseStudy from "../../models/casestudy";
     export let data: CaseStudy;
 </script>
 

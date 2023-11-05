@@ -365,10 +365,10 @@
 
 <script lang="ts">
     import { onMount } from "svelte";
-    import { sendNotification, NotificationState } from "../../lib/utilities";
-    import Deliverable from "../../cards/Deliverable.svelte";
-    import Icon from "../../components/Icon.svelte";
-    import Project from "../../cards/Project.svelte";
+    import { sendNotification, NotificationState } from "../../lib/utilities/utilities";
+    import Deliverable from "../../lib/cards/Deliverable.svelte";
+    import Icon from "../../lib/components/Icon.svelte";
+    import Project from "../../lib/cards/ProjectCard.svelte";
 
 
     let viewportHeight : number = 0;

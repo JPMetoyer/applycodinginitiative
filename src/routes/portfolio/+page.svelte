@@ -142,15 +142,11 @@
 </style>
 
 <script lang="ts">
-    import Icon from "../../components/Icon.svelte";
-    import Project from "../../cards/Project.svelte";
-    import CaseStudy from "../../models/casestudy";
-    
-    import projects from "../../data/portfolio.json";
+    import ProjectCard from "$lib/cards/ProjectCard.svelte";
+import Icon from "$lib/components/Icon.svelte";
+    import projects from "$lib/data/projects.json";
 
     let highlightIndex: number = 0; 
-
-
 </script>
 
 
@@ -164,7 +160,7 @@
         <div class="carousel">
         <div class="viewport">
         { #each projects as info }
-            <Project data={ new CaseStudy(info) } />
+            <ProjectCard data={ info } />
         {/each }
         </div>
         </div>
@@ -198,7 +194,7 @@
 
     <div class="grid">
         { #each projects as info }
-            <Project data={ new CaseStudy(info) } />
+        <ProjectCard data={ info } />
         {/each }
     </div>
 </section>

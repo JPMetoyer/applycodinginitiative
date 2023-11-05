@@ -10,7 +10,7 @@
 
 <style lang="scss">
 
-    @use "../variables" as app; 
+    @use "../../variables" as app; 
 
     div.deliverable {
 

@@ -4,6 +4,27 @@
 <style lang="scss">
     @use "../variables" as app;
 
+    nav a.highlight {
+        position: relative;
+        color: app.$color-brand;
+
+        &::after {
+            content: "";
+
+            position: absolute;
+            bottom: -0.2rem;
+            left: 50%;
+            right: 0px;
+            transform: translateX(-50%);
+
+            height: 0.2rem;
+            width: 0.2rem;
+            background-color: app.$color-brand;
+            border-radius: 0.5rem;
+            
+        }
+    }
+
 
     nav {
         position: fixed; 
@@ -24,8 +45,8 @@
 
             content: "";
             bottom: 0px;
-            left: 3vw;
-            right: 3vw;
+            left: 0vw;
+            right: 0vw;
             height: 1px;
             border-bottom: 0.5px dashed app.$color-brand;
         }
@@ -206,11 +227,16 @@
             }
 
             > a {
+                position: relative;
                 font-size: 180%;
                 font-weight: app.$weight-bold;
 
                 padding: 0.5rem 0px 0.5rem 2rem;
+
+            
             }
+
+            
         }
     }
 </style>
@@ -218,10 +244,11 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import "../app.scss";
-    import Icon from "../components/Icon.svelte";
+    import Icon from "../lib/components/Icon.svelte";
 
     import { page } from '$app/stores';
-    import { NotificationState, notification, sendNotification } from "../lib/utilities";
+    import { NotificationState, notification, sendNotification } from "../lib/utilities/utilities";
+
 
     $: color = () => { 
         if ($notification === undefined) { return "transparent"; }
@@ -252,6 +279,7 @@
         popup.addEventListener(("click"), toggleNavbar);
     });
 
+    console.log($page.url.pathname);
 
 
 </script>
@@ -263,10 +291,9 @@
     </a>
 
     <div class="links">
-        <a href="/">Home</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/services">Services</a>
-        <a href="/about">About</a>
+        <a class={ $page.url.pathname === "/portfolio" ? "highlight" : "" } href="/portfolio">Portfolio</a>
+        <a class={ $page.url.pathname === "/services" ? "highlight" : "" } href="/services">Services</a>
+        <a class={ $page.url.pathname === "/about" ? "highlight" : "" } href="/about">About</a>
     </div>
 
     <span>

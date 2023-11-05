@@ -1,14 +1,13 @@
-<script>
-    import Icon from "../../../components/Icon.svelte";
+
+
+<script lang="ts">
 
     import { page } from '$app/stores';
-    import projects from "../../../data/portfolio.json";
-    import CaseStudy from "../../../models/casestudy";
+    import Icon from '$lib/components/Icon.svelte';
+    import projects from "$lib/data/projects.json";
 
     const projectID = $page.params.project;
-    const response = new CaseStudy(projects.find((sample) => sample.id === projectID));
-
-
+    const response = projects.find((sample) => sample.id === projectID)!;
 </script>
 
 
@@ -290,7 +289,7 @@
         </div>
 
         <div class="call-to-action">
-            <a class="button secondary" href="">Join in the Mix</a>
+            <a class="button secondary" href="/quote">Join in the Mix</a>
         </div>
     </section>
 
