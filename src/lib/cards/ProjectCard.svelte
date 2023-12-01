@@ -25,6 +25,10 @@
         .info {
             padding: 0.6rem 1rem;
 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
             > p:nth-child(1) { font-weight: app.$weight-bold; color: app.$color-foreground; }
         }
 

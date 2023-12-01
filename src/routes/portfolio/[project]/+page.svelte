@@ -17,6 +17,13 @@
     article {
         padding: 1rem 5vw 0rem 5vw;
 
+        max-width: 960px;
+
+        @media screen and (min-width: 960px) {
+            margin: 2rem auto 2rem auto;
+            padding: 0px 0rem;
+        }
+
         section {
 
 
@@ -289,7 +296,7 @@
         </div>
 
         <div class="call-to-action">
-            <a class="button secondary" href="/quote">Join in the Mix</a>
+            <a class="button secondary" href="/hire">Want to be our next success story?</a>
         </div>
     </section>
 

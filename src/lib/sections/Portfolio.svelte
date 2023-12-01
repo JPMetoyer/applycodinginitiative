@@ -6,7 +6,7 @@
     #showcase {
 
 
-        display: grid;
+        display: none;
         grid-template-columns: 1fr 2fr 0.5fr;
         grid-template-rows: 1fr;
         gap: 1rem 1rem; 
@@ -99,17 +99,28 @@
         
     }
 
-    #catalogue {
+    #portfolio {
         padding: 0rem 5vw;
+        margin: 6rem auto 2rem auto;
 
         display: flex;
         flex-direction: column;
         height: min-content;
 
+        max-width: app.$max-width;
+
+        @media screen and (min-width: 960px) {
+            margin: 8rem auto 8rem auto;
+            padding: 0rem 0rem;
+        }
+
+
         > div.info {
             display: flex; 
             flex-direction: column;
             gap: 2rem;
+
+            max-width: 640px;
 
             > h1 { position: relative; }
             > h1::after { 
@@ -186,7 +197,7 @@ import Icon from "$lib/components/Icon.svelte";
     </div>
 </article>
 
-<section id="catalogue">
+<section id="portfolio">
     <div class="info">
         <h1>(33)Beats that Speak for Themselves</h1>
         <p>Savor the sounds in our auditory showcase, where each project is a unique melody of our DJ solutions prowess. Immerse yourself in a world of sonic creativity</p>

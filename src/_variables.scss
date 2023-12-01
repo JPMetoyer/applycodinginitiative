@@ -10,7 +10,8 @@ $typeface-body:
 
 $weight-light: 200; 
 $weight-regular: 300; 
-$weight-bold: 400; 
+$weight-semibold: 400; 
+$weight-bold: 500; 
 $weight-black: 600; 
 
 $color-foreground: #2F2F2F; 
@@ -32,6 +33,8 @@ $color-brand: #FB2D2D;
 $color-info: #3361FF; 
 $color-error: #FF5E6E; 
 $color-gold: #FFD700; 
+
+$max-width: 1360px;
 
 
 // Mixins

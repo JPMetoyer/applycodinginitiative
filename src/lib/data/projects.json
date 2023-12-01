@@ -1,6 +1,7 @@
 [
     {
         "id": "redbull",
+        "tag": "Audience Reach",
         "company": "RedBull",
         "logo": "/icons/redbull.png",
         "title": "Revolutionize Your Energy",
@@ -41,6 +42,7 @@
     {
         "id": "heineken",
         "company": "Heineken",
+        "tag": "Unforgettable Event",
         "logo": "/icons/heineken.png",
         "title": "Sonic Celebration of Success",
         "challenge": "At the forefront of the shareholder event for Heineken, 33Beats faced the exhilarating challenge of entertaining and captivating stakeholders. With our expertly curated performance, we orchestrated an unforgettable experience that celebrated success, fostered connections, and left a lasting impression on all attendees.",
@@ -80,6 +82,7 @@
     {
         "id": "ferrari",
         "company": "Ferrari",
+        "tag": "Brand Promotion",
         "logo": "/icons/ferrari.png",
         "title": "Unleashing Elegance and Power",
         "challenge": "At the forefront of the product launch event for Ferrari, 33Beats faced the exhilarating challenge of showcasing the new generation of the Ferrari Tribuno in a way that ignited passion and captivated the audience. Our expertly curated performance set the stage for an unforgettable experience, unveiling the epitome of Italian luxury and automotive excellence.",
@@ -120,6 +123,7 @@
         "id": "guinness",
         "company": "Guinness",
         "logo": "/icons/guinness.png",
+        "tag": "Product Launch",
         "title": "Savoring Kenyan Journey",
         "challenge": "At the forefront of the company outreach event for Guinness, the challenge for the event team was to aid in brand identity development to establish and strengthen Guinness' position in the Kenyan market. By delivering a captivating performance, 33Beats helped infuse the event with the essence of Guinness, elevating its presence and resonating with the target audience.",
         "before": ["/images/festival.jpg", "/images/festival.jpg", "/images/festival.jpg"],

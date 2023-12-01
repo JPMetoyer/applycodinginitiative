@@ -44,6 +44,8 @@
             height: 40vh;
             width: 90vw;
 
+            top: calc(120vh);
+
             @media screen and (min-width: 960px) {
                 position: fixed;
                 top: 4rem;
@@ -147,8 +149,13 @@
 
             div.competitions {
                 margin-top: 2rem;
+
+                @media screen and (max-width: 960px) {
+                    margin-bottom: 50vh;
+                }
             }
 
+        
             div.organizations {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -315,7 +322,7 @@
                 // height: 2.5rem;
 
                 display: flex;
-                align-items: center;
+                align-items: flex-end;
                 justify-content: space-between;
 
                 @media screen and (min-width: 960px) {
@@ -360,6 +367,10 @@
             }
         }
 
+        #action {
+            min-width: max-content;
+        }
+
     }
 </style>
 
@@ -369,6 +380,7 @@
     import Deliverable from "../../lib/cards/Deliverable.svelte";
     import Icon from "../../lib/components/Icon.svelte";
     import Project from "../../lib/cards/ProjectCard.svelte";
+    import Services from "$lib/sections/Services.svelte";
 
 
     let viewportHeight : number = 0;
@@ -378,10 +390,10 @@
 
 
     $: deliverableServices = [
-        { selected: false, lead: "A.V.", name: "Production", image: "atlassian.png", id: "avprod", minKes: 12000, maxKes: 15000, minDollar: 100, maxDollar: 150 },
-        { selected: false, lead: "Event", name: "Experiences", image: "atlassian.png", id: "event", minKes: 20000, maxKes: 21000, minDollar: 200, maxDollar: 210 },
-        { selected: false, lead: "Digital", name: "Branding", image: "atlassian.png", id: "branding", minKes: 17000, maxKes: 21000, minDollar: 170, maxDollar: 210 },
-        { selected: false, lead: "Promotional", name: "Marketing", image: "atlassian.png", id: "marketing", minKes: 24000, maxKes: 32500, minDollar: 240, maxDollar: 325 }
+        { thumbnail: "barman.jpg", selected: false, lead: "A.V.", name: "Production", image: "official.png", id: "avprod", minKes: 12000, maxKes: 15000, minDollar: 100, maxDollar: 150 },
+        { thumbnail: "cocktail.jpg", selected: false, lead: "Event", name: "Experiences", image: "official.png", id: "event", minKes: 20000, maxKes: 21000, minDollar: 200, maxDollar: 210 },
+        { thumbnail: "edm.jpg", selected: false, lead: "Digital", name: "Branding", image: "official.png", id: "branding", minKes: 17000, maxKes: 21000, minDollar: 170, maxDollar: 210 },
+        { thumbnail: "festival.jpg", selected: false, lead: "Promotional", name: "Marketing", image: "official.png", id: "marketing", minKes: 24000, maxKes: 32500, minDollar: 240, maxDollar: 325 }
     ]
 
     // Answers
@@ -467,24 +479,7 @@
 <main>
 <section id="contact">
 
-    <div id="canvas">
-        <Deliverable title="A.V. Production" active={ deliverableServices[0].selected } image={ "/images/under.jpeg" } />
-        <Deliverable title="Expertly Curated Events" active={ deliverableServices[1].selected } image={ "/images/tours.jpeg" } />
-        <Deliverable title="Digital Branding" active={ deliverableServices[2].selected } image={ "/images/tours.jpeg" } />
-        <Deliverable title="Promotional Marketing" active={ deliverableServices[3].selected } image={ "/images/tours.jpeg" } />
 
-        <span class="check horizontal">
-            { #each Array(rows) as _ }
-            <span></span>
-            {/each }
-        </span>
-
-        <span class="check vertical">
-        { #each Array(rows) as _ }
-            <span></span>
-        {/each }
-        </span>
-    </div>
 
     <article>
         <div class="description header">
@@ -499,6 +494,25 @@
             <span class="list">
                 <p>This is form will act as the initial point of contact between you and us</p>
                 <p class="point">The prices listed below are rough estimates - true costs will change depending on the exact scope, challenge, and deliverables for the project</p>
+            </span>
+        </div>
+
+
+        <div id="canvas">
+            {#each deliverableServices as service, index }
+                <Deliverable title={ service.lead + " " + service.name } active={ service.selected } image={ `/images/${ service.thumbnail }` } />
+            {/each }
+    
+            <span class="check horizontal">
+                { #each Array(rows) as _ }
+                <span></span>
+                {/each }
+            </span>
+    
+            <span class="check vertical">
+            { #each Array(rows) as _ }
+                <span></span>
+            {/each }
             </span>
         </div>
 
@@ -577,12 +591,12 @@
                 <p>Let's bring your vision to life! Describe your project in detail, from the atmosphere you envision to specific services you're interested in. We're here to tailor our DJ solutions to your unique ideas and make your event unforgettable.</p>
             </div>
             <div class="prompt">
-                <textarea rows="1" bind:this={ projectDescriptionElement } on:input={ () => projectDescriptionElement.style.height = `${ (projectDescriptionElement.scrollHeight) }px` } bind:value={ projectDescription } name="" id="" placeholder="Describe the project you had in mind"></textarea>
+                <textarea rows="4" bind:this={ projectDescriptionElement } on:input={ () => projectDescriptionElement.style.height = `${ (projectDescriptionElement.scrollHeight) }px` } bind:value={ projectDescription } name="" id="" placeholder="Describe the project you had in mind"></textarea>
             </div>
 
             <span>
                 <p>{ (currency === "dollar" ? "$ " : "KES ") }{ total[0].toLocaleString() }-{ total[1].toLocaleString() }</p>
-                <button type="submit" disabled={ (submittable === false) || (sending === true) }>{ submittable ? "Submit" : "Fill in all information" }</button>
+                <button id="action" type="submit" disabled={ (submittable === false) || (sending === true) }>{ submittable ? "Submit" : "Fill in all information" }</button>
             </span>
         </form>
     </article>

@@ -6,14 +6,17 @@
 
     section#hero {
         position: relative;
-        height: calc(100dvh - 4rem);
+        height: calc(100svh - 4rem);
 
-        overflow: hidden;
+        overflow: hidden hidden;
+
 
         div.canvas {
             display: grid;
             grid-template-columns: 1fr;
-            grid-template-rows: 1fr 1fr;
+            grid-template-rows: 1fr 1.5fr;
+
+
 
             gap: 1rem 2rem;
 
@@ -24,7 +27,7 @@
             }
 
             height: 100%;
-            padding: 2rem 8vw 6rem 8vw;
+            padding: 0rem 6vw 4.5rem 6vw;
 
             div.info {
 
@@ -32,16 +35,34 @@
                 flex-direction: column;
                 justify-content: center;
 
-                gap: 3vmax;
+                width: 100%;
+
+
+                gap: 0.5rem;
+
+                span { color: app.$color-brand; };
 
                 #title {
-                    font-size: 320%;
-                    font-weight: app.$weight-regular;
+                    font-size:120%;
+                    line-height: 150%;
+                    font-weight: app.$weight-semibold;
+
+                    span { font-size: inherit; }
+
+                    @media screen and (min-width: 960px) {
+                        font-size: 180%;
+                        font-weight: app.$weight-bold;
+                    }
                 }
 
                 > p {
-                    line-height: 164%;
-                    font-size: 110%;
+                    line-height: 150%;
+                    // font-size: 110%;
+
+                    @media screen and (min-width: 960px) {
+                        font-size: 124%;
+                        // font-weight: app.$weight-bold;
+                    }
                 }
             }
 
@@ -57,8 +78,12 @@
                     bottom: 0px;
 
                     display: flex;
-                    align-items: center;
+                    align-items: flex-start;
                     justify-content: flex-start;
+
+                    @media screen and (max-width: 960px) {
+                        top: 0vh;
+                    }
                 }
 
                 div.container {
@@ -77,12 +102,22 @@
                         margin: 0.8rem 0.5rem;
                         gap: 0.5rem;
                         height: 6rem;
-                        
+                       
+                    }
+
+                    @media screen and (min-width: 1200px) {
+                        > :global(a) {
+                        grid-template-rows: 16rem 5rem;
+                        }
                     }
 
                     width: calc(42vw - 4rem);
-                    height: 24rem;
-                    // border: 1px solid red;
+                    height: 90%;
+
+                    @media screen and (max-width: 540px) {
+                    width: calc(92vw - 2rem);
+                        
+                    }
 
 
                     transition-property: transform opacity;
@@ -93,7 +128,12 @@
                     opacity: 100%;
                     transform: matrix(1, 0, 0, 1, var(--displacement), 0);
 
-                    &:nth-child(1) { margin-left: 1rem; }
+                    @media screen and (min-width: 960px) {
+                        transform: matrix(1, 0, 0, 1, calc(var(--displacement) * 0.9), 0);
+                        &.hidden { transform: matrix(0.9, 0, 0, 0.9, calc(var(--displacement) * 0.9), 0); opacity: 0%; }
+                    }
+
+                    // &:nth-child(1) { margin-left: 0rem; }
                     &.hidden { transform: matrix(0.9, 0, 0, 0.9, var(--displacement), 0); opacity: 0%; }
                 }
             }
@@ -102,9 +142,11 @@
 
         div.controls {
             position: absolute;
-            bottom: 0px;
+            bottom: 1rem;
             left: 0px;
             right: 0px;
+
+            padding: 0px 1rem;
 
             display: flex;
             align-items: center;
@@ -148,11 +190,10 @@
 
                 position: absolute;
                 
-                top: 0%;
+                top: -150%;
                 transform: translateY(-50%) translateX(-50%);
                 left: 50%;
 
-                
 
                 @media screen and (min-width: 580px) {
                     top: 50%;
@@ -198,16 +239,16 @@
 <section id="hero">
 
     <div class="canvas">
-        <div class="info">
-            <h1 id="title">Blood Drive event hosted by: </h1>
-            <p>Discover life-saving opportunities near you! Our website connects you with local blood donation events, making it easy to give back to your community. Join us in the mission to save lives, one drop at a time. Find nearby events, schedule appointments, and be a hero today. Your donation can make a world of difference!</p>
+        <div class="info" >
+            <h1 id="title">Turn Tables &middot; Turn Heads<br>Elevate your <span>{ projects[focusIndex].tag }</span></h1>
+            <p >Dedicated to creating memorable experiences, we specialize in captivating audiences, marketing brands, and forging unforgettable memories through our unparalleled DJ services.</p>
         </div>
 
         <div class="graphic" bind:clientWidth={ containerWidth }>
         <div class="content">
             { #each projects.slice(0, 4) as item, index }
                 <div class={ `container${ (index < focusIndex) ? " hidden" : "" }` }
-                    style={ `--displacement: ${ index < focusIndex ? -(containerWidth - 40) * index : -(containerWidth - 40) * focusIndex  }` }>
+                    style={ `--displacement: ${ index < focusIndex ? -(containerWidth) * index : -(containerWidth) * focusIndex  }` }>
                     <ProjectCard data={ item } />
                 </div>
             {/each } 
@@ -224,8 +265,8 @@
         </div>
 
         <div class="cta">
-            <a href="/events" class="button tertiary" id="cta">All Events</a>
-            <a href="/guides" class="button secondary" id="cta">View Tips</a>
+            <a href="/#services" class="button tertiary" id="cta">Our Services</a>
+            <a href="/#portfolio" class="button secondary" id="cta">See projects</a>
         </div>
 
         <div class="arrows">

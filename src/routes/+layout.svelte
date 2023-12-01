@@ -8,8 +8,10 @@
         position: relative;
         color: app.$color-brand;
 
+        font-weight: app.$weight-bold;
+
         &::after {
-            content: "";
+            // content: "";
 
             position: absolute;
             bottom: -0.2rem;
@@ -287,17 +289,18 @@
 
 <nav>
     <a href="/" id="logo">
-        <img src="/icons/favicon.png" alt="">
+        <img src="/icons/thirty3.png" alt="">
     </a>
 
     <div class="links">
-        <a class={ $page.url.pathname === "/portfolio" ? "highlight" : "" } href="/portfolio">Portfolio</a>
-        <a class={ $page.url.pathname === "/services" ? "highlight" : "" } href="/services">Services</a>
-        <a class={ $page.url.pathname === "/about" ? "highlight" : "" } href="/about">About</a>
+        <a class={ $page.url.hash === "#about" ? "highlight" : "" } href="/#about">About</a>
+        <a class={ $page.url.hash === "#services" ? "highlight" : "" } href="/#services">Services</a>
+        <a class={ $page.url.hash === "#portfolio" ? "highlight" : "" } href="/#portfolio">Portfolio</a>
+        <a class={ $page.url.hash === "#process" ? "highlight" : "" } href="/#process">Process</a>
     </div>
 
     <span>
-        <a href="/quote" class="button">Get Quote</a>
+        <a href="/hire" class="button">Hire Us</a>
 
         <Icon handleClick={ toggleNavbar }>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -315,9 +318,10 @@
 
     <div class="links">
         <a href="/">Home</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/services">Services</a>
-        <a href="/about">About</a>
+        <a href="/#about">About</a>
+        <a href="/#services">Services</a>
+        <a href="/#portfolio">Portfolio</a>
+        <a href="/#process">Process</a>
 
         <div class="cite">
             <p>Copy &copy; 2023</p>

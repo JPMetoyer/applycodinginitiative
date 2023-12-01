@@ -8,29 +8,40 @@
 
     article#services {
         width: 100%;
-        padding-top: 60vh;
+        // padding-top: 60vh;
 
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+        gap: 2rem;
 
         position: relative;
-        padding-bottom: 4rem;
+        padding: 0px 5vw 0rem 5vw;
 
+        max-width: app.$max-width;
+
+        @media screen and (min-width: app.$max-width) {
+            margin: 2rem auto 2rem auto;
+            padding: 0px 4vw;
+
+
+            div#header { padding: 0px 0px !important; }
+
+        }
 
         overflow: hidden;
 
         div#header {
-            position: absolute;
-            top: 0.5rem;
-            left: 0px;
-            right: 0px;
+            // position: absolute;
+            // top: 0.5rem;
+            // left: 0px;
+            // right: 0px;
 
             display: flex; 
             flex-direction: column;
             gap: 2rem;
 
-            padding: 0px 5vw;
+            // padding: 0px 5vw;
 
             > h1 { position: relative; font-size: 164%; }
             > h1 > * { font-size: 100%; }
@@ -47,25 +58,38 @@
             }
         }
 
-        div#graphic {
-            position: absolute;
-            top: 9rem;
-            left: 50%;
-            right: 0px;
-            width: 90vw;
-            height: 36vh;
-            transform: translateX(-50%);
+        #region {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 1.5rem 4vw;
 
+
+            @media screen and (max-width: 960px) {
+                grid-template-columns: 1fr;
+                grid-template-rows: max-content 1fr;
+
+                > div {
+                    width: 90vw;
+                }
+            }
+        }
+
+        div#graphic {
+
+            margin: auto 0px;
+            height: 100%;
 
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: center;
 
             > img {
-                margin-top: auto;
-                width: 100%;
-                height: 90%;
+                margin: auto auto 1rem auto;
+                // width: 100%;
+                // height: 100%;
                 object-fit: cover;
+                border-radius: 1rem;
             }
 
             > p {
@@ -100,7 +124,6 @@
         }
 
         div.message {
-            padding: 0px 5vw;
 
             display: flex;
             flex-direction: column;
@@ -109,6 +132,8 @@
 
             margin-bottom: 1rem;
 
+            p { height: 8rem; }
+
             ul {
                 margin-left: 2rem; 
                 color: app.$color-foreground;
@@ -116,27 +141,11 @@
         }
 
         div.selection {
-            position: relative;
-            overflow: scroll visible;
-            padding: 0px 5vw;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 1rem 1rem;
 
-
-            // mobile
-            height: 7rem;
-            margin-bottom: 1rem;
-
-
-            > div.content {
-                position: absolute;
-                width: max-content;
-
-                display: flex;
-                align-items: center;
-                gap: 0.8rem;
-
-                height: 100%;
-                padding-right: 5vw;
-            }
 
             button {
                 display: flex;
@@ -144,13 +153,11 @@
                 align-items: flex-end;
                 justify-content: flex-end;
 
-                padding: 1rem 1rem 0.8rem 4rem;
+                padding: 1rem 1rem 0.8rem 0rem;
                 border-radius: 0.8rem;
                 border: 1px dashed app.$color-gray;
-
-                height: max-content;
-                width: 10rem;
-
+                height: 100%;
+                width: 100%;
 
                 background-color: transparent;
 
@@ -175,7 +182,7 @@
 
         div#cta {
 
-            position: fixed;
+            position: sticky;
             bottom: 0px;
             left: 0px;
             right: 0px;
@@ -216,7 +223,7 @@
             image: "cocktail.jpg",
             lead: "Curated",
             title: "Events",
-            description: "From intimate gatherings to massive festivals, we craft unforgettable DJ experiences. Our team handles everything, from set design to audience engagement, ensuring your event is a sonic spectacle.",
+            description: "Crafting unforgettable DJ experiences: from intimate gatherings to massive festivals. Handling everything, from set design to audience engagement, ensuring your event is a sonic spectacle.",
             deliverables: [
                 "Custom Set Design",
                 "Audience Engagement Strategies",
@@ -228,7 +235,7 @@
             image: "festival.jpg",
             lead: "Digital",
             title: "Branding",
-            description: "Ignite your online presence with our digital branding service. We design eye-catching visuals, produce engaging content, and strategize social media campaigns to amplify your DJ brand across digital platforms.",
+            description: "Ignite your online presence with our digital branding service. Designing eye-catching visuals, producing engaging content, and strategizing social media campaigns to amplify your brand across platforms.",
             deliverables: [
                 "Eye-Catching Visual Design",
                 "Engaging Content Production:",
@@ -257,34 +264,33 @@
         <p>Here is how we can help:</p>
     </div>
 
-    <div id="graphic">  
-        <p>{ services[activeIndex].single }</p>
-        <p>{ services[activeIndex].single }</p>
-        <img src={ `/images/${ services[activeIndex].image }` } alt="">
+    <div id="region">
+        <div id="graphic">  
+            <p>{ services[activeIndex].single }</p>
+            <p>{ services[activeIndex].single }</p>
+            <img src={ `/images/${ services[activeIndex].image }` } alt="">
+        </div>
+
+        <div>
+            <div class="message">
+                <p>{ services[activeIndex].description }</p>
+                <ul>
+                    { #each services[activeIndex].deliverables as deliverable }
+                        <li>{ deliverable }</li>
+                    {/each }
+                </ul>
+            </div>
+
+            <div class="selection">
+                { #each services as service, index}
+                <button class={ (activeIndex === index) ? "show" : "" } on:click={ () => { activeIndex = index }} >
+                    <p>{ service.lead }</p>
+                    <h4>{ service.title }</h4>
+                </button>
+                {/each }
+            </div>
+        </div>
     </div>
-
-
-    <div class="message">
-        <p>{ services[activeIndex].description }</p>
-        <ul>
-            { #each services[activeIndex].deliverables as deliverable }
-                <li>{ deliverable }</li>
-            {/each }
-        </ul>
-    </div>
-
-    <div class="selection scrollbar-hidden">
-    <div class="content">
-        { #each services as service, index}
-        <button class={ (activeIndex === index) ? "show" : "" } on:click={ () => { activeIndex = index }} >
-            <p>{ service.lead }</p>
-            <h4>{ service.title }</h4>
-        </button>
-        {/each }
-    </div>
-    </div>
-
-
 
 
     <div id="cta">
