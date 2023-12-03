@@ -54,13 +54,26 @@
         }
 
         #logo {
-            // width: 2.8rem;
             height: 2.8rem;
-            padding: 0.2rem;
             fill: app.$color-brand;
+            stroke: transparent;
+
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            > h1 {
+                color: app.$color-brand;
+                text-decoration: none;
+                font-weight: app.$weight-black;
+                text-transform: uppercase;
+                font-size: 110%;
+                margin-left: 0.5rem;
+            } 
         }
 
         div.links {
+            display: none !important;
             position: absolute;
             left: 50%;
 
@@ -277,6 +290,8 @@
     let showNavbar: boolean = false;
     const toggleNavbar = () => { showNavbar = !showNavbar };
 
+    let viewportWidth: number = 0;
+
     onMount(() => {
         popup.addEventListener(("click"), toggleNavbar);
     });
@@ -286,10 +301,17 @@
 
 </script>
 
+<svelte:window bind:innerWidth={ viewportWidth } />
+
 
 <nav>
-    <a href="/" id="logo">
+    <!-- <a href="/" id="logo">
         <img src="/icons/thirty3.png" alt="">
+    </a> -->
+
+    <a href="/" id="logo">
+        <img src="/icons/logo.png" alt=""> 
+        <h1>{ (viewportWidth < 400) ? "THE WCI" : "Wunsche Coding Initiative" }</h1>         
     </a>
 
     <div class="links">
@@ -299,14 +321,15 @@
         <a class={ $page.url.hash === "#process" ? "highlight" : "" } href="/#process">Process</a>
     </div>
 
-    <span>
-        <a href="/hire" class="button">Hire Us</a>
 
-        <Icon handleClick={ toggleNavbar }>
+    <span>
+        <a href="https://codinginitiative.org" target="_blank" class="button">Club Page</a>
+
+        <!-- <Icon handleClick={ toggleNavbar }>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
               </svg>                                             
-        </Icon>
+        </Icon> -->
     </span>
 </nav>
 

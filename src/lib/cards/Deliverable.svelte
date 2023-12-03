@@ -17,11 +17,11 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        width: calc(100% - 4rem);
+        width: calc(100% - 2rem);
         max-width: 32rem;
 
 
-        height: calc(100% - 2rem);
+        height: calc(100% - 1rem);
         max-height: 24vmax;
 
         background-color: app.$color-background;
@@ -209,10 +209,10 @@
             z-index: 1;
 
             display: grid;
-            grid-template-columns: 2rem auto 2rem;
+            grid-template-columns: auto;
 
             background-color: hsl(218, 27%, 92%);
-            padding: 0.5rem 0.8rem;
+            padding: 0.2rem 0.8rem;
 
             > div {
                 display: flex;
