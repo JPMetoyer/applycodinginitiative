@@ -47,15 +47,23 @@
             height: 40vh;
             width: 90vw;
 
-            top: calc(145vh);
+            top: var(--offset);
+            transform: translateY(-60%);
+
+            @media screen and (min-width: 360px) and (max-width: 560px) {
+                transform: translateY(-120%);
+            }
+
+            @media screen and (min-width: 560px) and (max-width: 960px) {
+                transform: translateY(-180%);
+            }
 
             @media screen and (min-width: 960px) {
                 position: fixed;
-                top: 4rem;
+                top: 60vh;
                 left: 5vw;
                 width: calc(45vw - 3vw);
                 height: 100vh;
-                top: calc(120vh);
 
             }
 
@@ -183,7 +191,7 @@
             margin-bottom: 24vh;
 
             @media screen and (max-width: 959px) {
-                margin-top: 42vh;
+                margin-top: 50vh;
             }
 
             
@@ -442,6 +450,7 @@
 <script lang="ts">
     import { sendNotification, NotificationState } from "$lib/utilities/utilities";
     import Deliverable from "$lib/cards/Deliverable.svelte";
+    import { onMount } from "svelte";
 
 
     let viewportHeight : number = 0;
@@ -450,17 +459,26 @@
     $: rows = Math.floor(viewportHeight / 40);
 
 
+
     // Answers
 
     let name: string;
     let email: string = "";
     let idNumber: number;
 
+    let offsetHeight = 0;
+
     let formElement: HTMLFormElement;
     let emailElement: HTMLInputElement;
 
     let sending : boolean = false;
     let emailError : string = "";
+
+
+    onMount(() => {
+        console.log(formElement.offsetTop);
+        offsetHeight = formElement.offsetTop;
+    });
 
     $: submittable = 
         (emailError === "") &&
@@ -568,7 +586,7 @@
         
 
 
-        <div id="canvas">
+        <div id="canvas" style={ `--offset: ${ offsetHeight }px` }>
             <Deliverable title={ "Outreach participants holding up our logo" } active={ true } image={ `/images/under.jpeg` } />
 
     
@@ -590,7 +608,7 @@
             <br>
                 
             <div class="description">
-                <h3>Contact information</h3>
+                <h3>Contact Information</h3>
                 <p>We will use this information to contact you and send updates. Use your school email to sign up. Or, if you are a current Wunsche Coding Initiative member, use your personal <b>[name]@codinginitiative.org</b> email to sign up</p>
             </div>
 
