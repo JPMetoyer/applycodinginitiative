@@ -484,6 +484,7 @@
     $: submittable = 
         (emailError === "") &&
         (name != "") && (name != undefined) &&
+        (teacher != "") && (teacher != undefined) &&
         (email != "") && (email != undefined) &&
         (idNumber != undefined);
         
@@ -519,6 +520,7 @@
         const data = JSON.stringify({
             name: name,
             email: email,
+            teacher: teacher,
             ID: idNumber
         });
 
