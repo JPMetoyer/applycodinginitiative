@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { collection, doc, getDoc, getDocs, getFirestore, limit, query, setDoc } from "firebase/firestore";
+import { Timestamp, collection, doc, getDoc, getDocs, getFirestore, limit, query, setDoc } from "firebase/firestore";
 import { json, type RequestHandler } from '@sveltejs/kit';
 import { API_KEY, APP_ID, AUTH_DOMAIN, MEASUREMENT_ID, MESSAGING_SENDER_ID } from '$env/static/private';
 
@@ -36,7 +36,7 @@ export const POST: RequestHandler = async ({ request }) => {
         const data : Application = await request.json();
 
         const documentReference = doc(database, "hourofcode", data.email);
-        await setDoc(documentReference, { ... data }, { merge: false });
+        await setDoc(documentReference, { ... data, time: Timestamp.now() }, { merge: false });
 
         return json({ status: 300, message: "Successfully sent application" });
     

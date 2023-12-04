@@ -581,8 +581,9 @@
                 <p>👩‍💻&nbsp; No coding experience is necessary</p>
                 <p>🍿&nbsp; Free popcorn, cookies, and drinks will be offered at the event</p>
                 <p>🏆&nbsp; Winnable prizes & free swag will be available</p>
-                <p>🕒&nbsp; The event will occur during 7th period</p>
                 <p>👫&nbsp; You are encouraged to bring friends and go through the experience together</p>
+                <p>🕒&nbsp; The event will occur during 7th period</p>
+                <p><b>💻&nbsp; Make sure to bring your chromebook/laptop</b></p>
                 <p><b>📝&nbsp; Only the first 150 people who sign up will be called down to participate</b></p>
             </span>
         </div>
