@@ -41,7 +41,7 @@ export const POST: RequestHandler = async ({ request }) => {
         return json({ status: 300, message: "Successfully sent application" });
     
     } catch (error) {
-        return json({ status: 405, message: "Internal server error sending application" })
+        return json({ status: 405, message: "Internal server error sending application request" })
     }    
 };
 
