@@ -56,7 +56,7 @@ export const GET: RequestHandler = async ({ request }) => {
 
         const responses = snapshot.docs.map((document) => document.data());
 
-        return json({ status: 300, applications: "Application array" });
+        return json({ status: 300, applications: responses, length: responses.length });
     } catch {
         return json({ status: 405, message: "Couldn't get data" })
     }
